@@ -6,8 +6,7 @@ date: 2024-07-09 09:50:00 +0800
 categories: [Docker, Install]
 tags: [Linux, Ubuntu, Docker]
 image:
-  path: /assets/img/posts/ubuntu-docker-install/docker-image.png
-  alt: server-usb
+  path: /assets/img/posts/ubuntu-docker-install/docker-icon.png
 ---
 
 ## 0. 기존 Docker 설치 제거 (선택 사항)
@@ -22,7 +21,7 @@ sudo apt-get remove docker docker-engine docker.io containerd runc
 sudo apt-get update
 ```
 
-## 1. 필요 패키지(종속성) 설치
+## 2. 필요 패키지(종속성) 설치
 - HTTPS를 통해 Ubuntu 24.04가 Docker 저장소에 엑세스 할 수 있도록 필요한 패키지를 설치
 
 ```bash
@@ -30,7 +29,7 @@ sudo apt-get update
 sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
 ```
 
-## 2. Docker 공식 GPG 키 추가
+## 3. Docker 공식 GPG 키 추가
 ```bash
 # Docker 공식 GPG 키 다운로드 | 다운로드 된 GPG키 APT 저장소에 추가
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -55,7 +54,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 # -o (output) /usr/share/keyrings/docker-archive-keyring.gpg : 변환된 바이너리 키를 /usr/share/keyrings/docker-archive-keyring.gpg 파일에 저장
 ```
 
-## 3. Docker APT 저장소 추가
+## 4. Docker APT 저장소 추가
 - APT 소스목록에 Docker 저장소를 추가
 
 ```bash
@@ -70,26 +69,26 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-## 4. 패키지 목록 업데이트
+## 5. 패키지 목록 업데이트
 - 새로 추가된 Docker 저장소를 사용하기 위해 패키지 목록을 업데이트
 
 ```bash
 sudo apt-get update
 ```
 
-## 5. Docker 엔진 & 관련 패키지 설치
+## 6. Docker 엔진 & 관련 패키지 설치
 ```bash
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
 
-## 6. Docker 설치 확인
+## 7. Docker 설치 확인
 ```bash
 sudo docker --version
 ```
 
 ![dockerv](../assets/img/posts/ubuntu-docker-install/docker-version.png)
 
-## 7. 도커 실행 확인
+## 8. 도커 실행 확인
 ```bash
 sudo docker run hello-world
 ```
