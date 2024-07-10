@@ -2,7 +2,7 @@
 title: "Ubuntu 24.04 Docker 설치방법"
 description: Ubuntu에서 Docker를 설치하는 방법을 알아보겠습니다.
 author: 김우석
-date: 2024-07-09 09:50:00 +0800
+date: 2024-07-09 09:50:00 +0900
 categories: [Docker, Install]
 tags: [Linux, Ubuntu, Docker]
 image:
