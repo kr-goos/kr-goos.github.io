@@ -3,4 +3,4 @@ Allow: /
 User-agent: BadBot
 Disallow: /
 
-Sitemap: https://kr-goos.github.io//sitemap.xml
+Sitemap: https://kr-goos.github.io/sitemap.xml
