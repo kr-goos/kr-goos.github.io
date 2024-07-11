@@ -1,5 +1,5 @@
 ---
-title: "Window Golang 설치 및 환경변수 설정"
+title: "[GO] Window Golang 설치 및 환경변수 설정"
 description: Window에서 Golang을 설치하고 환경변수를 설정하는 방법을 알아보겠습니다.
 author: 김우석
 date: 2024-07-10 09:00:00 +0900
