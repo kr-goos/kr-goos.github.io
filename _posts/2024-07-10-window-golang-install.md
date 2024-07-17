@@ -4,7 +4,7 @@ description: Window에서 Golang을 설치하고 환경변수를 설정하는 �
 author: 김우석
 date: 2024-07-10 09:00:00 +0900
 categories: [Golang, Install]
-tags: [Window, Golang, go언어]
+tags: [Window, Go, Golang, go언어]
 image:
   path: /assets/img/posts/window-golang-install/golang.svg
 ---

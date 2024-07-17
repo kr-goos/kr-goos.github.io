@@ -1,10 +1,10 @@
 ---
-title: "[GO] Golang 으로 Cache 구현해 보기 1편"
+title: "[GO] Golang 으로 Cache 구현해 보기 1편 Cache interface"
 description: 캐시란 무엇인지 알아보고 interface 를 구현하는 방법을 알아보겠습니다.
 author: 김우석
 date: 2024-07-17 11:18:00 +0900
 categories: [Golang, Cache]
-tags: [Golang, Go언어, Cache]
+tags: [Golang, Go, Go언어, Cache]
 image:
   path: /assets/img/posts/window-golang-install/golang.svg
 ---
@@ -60,6 +60,8 @@ type Cache interface {
 	Description() string
 }
 ```
+
+### 설명
 - Get(context.Context, string) (any, error)
     - 역할: 캐시에서 데이터를 읽어옵니다.
     - 설명: 키를 통해 캐시에서 데이터를 검색합니다. 컨텍스트를 사용하여 요청을 관리하고, 필요 시 취소할 수 있습니다.
