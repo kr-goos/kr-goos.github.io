@@ -27,7 +27,8 @@ image:
     - Redis는 주로 캐시로 사용되어 데이터베이스나 다른 데이터 소스로부터 데이터를 빠르게 읽어오고 메모리에 캐시하여 성능을 향상시킴
 - **메시지 브로커**
     - Redis는 Pub/Sub 메시지 브로커 기능을 지원하여 다양한 시스템 간의 메시지 전달을 처리할 수 있음
-- 세션 스토어: 세션 정보를 저장하고 관리하는 데 유용하게 사용
+- **세션 스토어**
+    - 세션 정보를 저장하고 관리하는 데 유용하게 사용
 - **리더보드**
     - 정렬된 세트를 활용하여 리더보드 기능을 구현할 수 있음
 - **통계 및 실시간 데이터 분석**
@@ -262,7 +263,7 @@ func (c *RedisCache) Description() string {
 ### 코드 실행 전 확인사항
 1. 작업 관리자 실행 후 서비스 탭에서 Redis 실행 중 확인
 ![aptrepo](../../assets/img/posts/golang-redis-cache/process-check.png)
-2. redis-cli 를 이용한 ping 확인
+2. redis 설치경로에 있는 redis-cli 를 이용한 ping/pong 확인 (기본 경로 : `:\Program Files\Redis`)
 ![aptrepo](../../assets/img/posts/golang-redis-cache/redis-cli-ping.png)
 3. NewRedisCache unit test
 
