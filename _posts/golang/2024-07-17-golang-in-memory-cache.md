@@ -2,7 +2,7 @@
 title: "[GO] Golang 으로 Cache 구현해 보기 2편 In-Memory Cache"
 description: In-Memory Cache 구현을 알아보겠습니다.
 author: 김우석
-date: 2024-07-17 11:18:00 +0900
+date: 2024-07-17 13:15:00 +0900
 categories: [Golang, Cache, In-Memory cache]
 tags: [Golang, Go, Go언어, Cache]
 image:
@@ -32,6 +32,9 @@ image:
 
 
 ## [Golang] In-Memory Cache 구현
+
+### [In-Memory Cache 코드링크](https://github.com/kr-goos/golang_blog/blob/master/internal/cache/in_memory_cache.go)
+
 ```golang
 package cache
 
@@ -57,7 +60,7 @@ func NewInMemoryCache() *InMemoryCache {
 	}
 }
 
-func (c *InMemoryCache) get(key string) (any, error) {
+func (c *InMemoryCache) Get(_ context.Context, key string) (any, error) {
 	c.mtx.RLock()
 	item, exists := c.items[key]
 	if !exists {
@@ -76,7 +79,7 @@ func (c *InMemoryCache) get(key string) (any, error) {
 	return item.value, nil
 }
 
-func (c *InMemoryCache) set(key string, value any, ttl time.Duration) error {
+func (c *InMemoryCache) Set(_ context.Context, key string, value any, ttl time.Duration) error {
 
 	expiry := time.Now().Add(ttl)
 	item := &cacheItem{
@@ -89,7 +92,7 @@ func (c *InMemoryCache) set(key string, value any, ttl time.Duration) error {
 	return nil
 }
 
-func (c *InMemoryCache) delete(key string) error {
+func (c *InMemoryCache) Delete(_ context.Context, key string) error {
 	c.mtx.Lock()
 	defer c.mtx.Unlock()
 
@@ -97,7 +100,7 @@ func (c *InMemoryCache) delete(key string) error {
 	return nil
 }
 
-func (c *InMemoryCache) setTTL(key string, ttl time.Duration) error {
+func (c *InMemoryCache) SetTTL(_ context.Context, key string, ttl time.Duration) error {
 	c.mtx.Lock()
 	defer c.mtx.Unlock()
 
@@ -109,7 +112,7 @@ func (c *InMemoryCache) setTTL(key string, ttl time.Duration) error {
 	return nil
 }
 
-func (c *InMemoryCache) getTTL(key string) (time.Duration, error) {
+func (c *InMemoryCache) GetTTL(_ context.Context, key string) (time.Duration, error) {
 	c.mtx.RLock()
 	defer c.mtx.RUnlock()
 
@@ -121,94 +124,7 @@ func (c *InMemoryCache) getTTL(key string) (time.Duration, error) {
 	return ttl, nil
 }
 
-func (c *InMemoryCache) Get(ctx context.Context, key string) (any, error) {
-	done := make(chan struct{})
-	var result any
-	var err error
-
-	go func() {
-		result, err = c.get(key)
-		close(done)
-	}()
-
-	select {
-	case <-ctx.Done():
-		return nil, ctx.Err()
-	case <-done:
-		return result, err
-	}
-}
-
-func (c *InMemoryCache) Set(ctx context.Context, key string, value any, ttl time.Duration) error {
-	done := make(chan struct{})
-	var err error
-
-	go func() {
-		err = c.set(key, value, ttl)
-		close(done)
-	}()
-
-	select {
-	case <-ctx.Done():
-		return ctx.Err()
-	case <-done:
-		return err
-	}
-}
-
-func (c *InMemoryCache) Delete(ctx context.Context, key string) error {
-	done := make(chan struct{})
-	var err error
-
-	go func() {
-		err = c.delete(key)
-		close(done)
-	}()
-
-	select {
-	case <-ctx.Done():
-		return ctx.Err()
-	case <-done:
-		return err
-	}
-}
-
-func (c *InMemoryCache) SetTTL(ctx context.Context, key string, ttl time.Duration) error {
-	done := make(chan struct{})
-	var err error
-
-	go func() {
-		err = c.setTTL(key, ttl)
-		close(done)
-	}()
-
-	select {
-	case <-ctx.Done():
-		return ctx.Err()
-	case <-done:
-		return err
-	}
-}
-
-func (c *InMemoryCache) GetTTL(ctx context.Context, key string) (time.Duration, error) {
-	done := make(chan struct{})
-	var ttl time.Duration
-	var err error
-
-	go func() {
-		ttl, err = c.getTTL(key)
-		close(done)
-	}()
-
-	select {
-	case <-ctx.Done():
-		return 0, ctx.Err()
-	case <-done:
-		return ttl, err
-	}
-}
-
-func (c *InMemoryCache) Exists(key string) (bool, error) {
+func (c *InMemoryCache) Exists(_ context.Context, key string) (bool, error) {
 	c.mtx.RLock()
 	defer c.mtx.RUnlock()
 
@@ -216,7 +132,7 @@ func (c *InMemoryCache) Exists(key string) (bool, error) {
 	return exists, nil
 }
 
-func (c *InMemoryCache) Clear() error {
+func (c *InMemoryCache) Clear(_ context.Context) error {
 	c.mtx.Lock()
 	defer c.mtx.Unlock()
 
@@ -224,7 +140,7 @@ func (c *InMemoryCache) Clear() error {
 	return nil
 }
 
-func (c *InMemoryCache) Close() {}
+func (c *InMemoryCache) Close() error { return nil }
 
 func (c *InMemoryCache) Description() string {
 	return "InMemoryCache: A simple in-memory cache implementation"
@@ -261,28 +177,27 @@ func NewInMemoryCache() *InMemoryCache {
 - `InMemoryCache` 인스턴스를 생성하며 `items` 맵을 초기화하여 캐시 항목을 저장할 준비
 
 ```golang
-func (c *InMemoryCache) get(key string) (any, error) {
-    c.mtx.RLock()
-    item, exists := c.items[key]
-    if !exists {
-        c.mtx.RUnlock()
-        return nil, ErrKeyNotFound
-    }
-    
+func (c *InMemoryCache) Get(_ context.Context, key string) (any, error) {
+	c.mtx.RLock()
+	item, exists := c.items[key]
+	if !exists {
+		c.mtx.RUnlock()
+		return nil, ErrKeyNotFound
+	}
 
-    if item.expiry.Before(time.Now()) {
-        c.mtx.RUnlock()
-        c.mtx.Lock() 
-        delete(c.items, key)
-        c.mtx.Unlock()
-        return nil, ErrKeyExpired
-    }
-    c.mtx.RUnlock()
-    return item.value, nil
+	if item.expiry.Before(time.Now()) {
+		c.mtx.RUnlock()
+		c.mtx.Lock()
+		delete(c.items, key)
+		c.mtx.Unlock()
+		return nil, ErrKeyExpired
+	}
+	c.mtx.RUnlock()
+	return item.value, nil
 }
 ```
 - 주어진 `key`에 대한 캐시 항목을 조회
-- 읽기 잠금을 사용하여 데이터 무결성을 유지
+- 읽기 & 쓰기 잠금을 사용하여 데이터 무결성을 유지
 - 항목이 존재하지 않으면 `ErrKeyNotFound`를 반환
 - 만료되지 않았다면 해당 `value`를 반환하며 만료된 데이터는 삭제
 - 지연 삭제 (Lazy Deletion) 방식
@@ -323,7 +238,7 @@ func (c *InMemoryCache) get(key string) (any, error) {
     - **`주기적 정리`는 백그라운드에서 자동으로 수행되고, `지연 삭제` 는 키를 액세스할 때마다 수행되어 즉각적인 관리를 보장합니다. 이렇게 하면 캐시의 메모리 사용을 효율적으로 유지할 수 있습니다.**
 
 ```golang
-func (c *InMemoryCache) set(key string, value any, ttl time.Duration) error {
+func (c *InMemoryCache) Set(_ context.Context, key string, value any, ttl time.Duration) error {
 
 	expiry := time.Now().Add(ttl)
 	item := &cacheItem{
@@ -341,28 +256,28 @@ func (c *InMemoryCache) set(key string, value any, ttl time.Duration) error {
 - 만료 시간을 현재 시간에 `ttl`을 더한 값으로 설정하여 cacheItem을 생성하고 `items` 맵에 항목을 추가
 
 ```golang
-func (c *InMemoryCache) delete(key string) error {
-    c.mtx.Lock()
-    defer c.mtx.Unlock()
+func (c *InMemoryCache) Delete(_ context.Context, key string) error {
+	c.mtx.Lock()
+	defer c.mtx.Unlock()
 
-    delete(c.items, key)
-    return nil
+	delete(c.items, key)
+	return nil
 }
 ```
 - 주어진 `key`의 캐시 항목을 삭제
 - 쓰기 잠금을 사용하여 안전하게 `items`맵에서 항목을 삭제
 
 ```golang
-func (c *InMemoryCache) setTTL(key string, ttl time.Duration) error {
-    c.mtx.Lock()
-    defer c.mtx.Unlock()
+func (c *InMemoryCache) SetTTL(_ context.Context, key string, ttl time.Duration) error {
+	c.mtx.Lock()
+	defer c.mtx.Unlock()
 
-    item, exists := c.items[key]
-    if !exists {
-        return ErrKeyNotFound
-    }
-    item.expiry = time.Now().Add(ttl)
-    return nil
+	item, exists := c.items[key]
+	if !exists {
+		return ErrKeyNotFound
+	}
+	item.expiry = time.Now().Add(ttl)
+	return nil
 }
 ```
 - 주어진 `key`의 TTL(Time-to-Live)을 설정
@@ -371,16 +286,16 @@ func (c *InMemoryCache) setTTL(key string, ttl time.Duration) error {
 - 존재하는 경우, 만료 시간을 현재 시간에 ttl을 더한 값으로 업데이트
 
 ```golang
-func (c *InMemoryCache) getTTL(key string) (time.Duration, error) {
-    c.mtx.RLock()
-    defer c.mtx.RUnlock()
+func (c *InMemoryCache) GetTTL(_ context.Context, key string) (time.Duration, error) {
+	c.mtx.RLock()
+	defer c.mtx.RUnlock()
 
-    item, exists := c.items[key]
-    if !exists {
-        return 0, ErrKeyNotFound
-    }
-    ttl := time.Until(item.expiry)
-    return ttl, nil
+	item, exists := c.items[key]
+	if !exists {
+		return 0, ErrKeyNotFound
+	}
+	ttl := time.Until(item.expiry)
+	return ttl, nil
 }
 ```
 - 주어진 `key`의 남은 TTL을 조회
@@ -388,36 +303,12 @@ func (c *InMemoryCache) getTTL(key string) (time.Duration, error) {
 - 항목이 존재하지 않으면 `ErrKeyNotFound`를 반환하고, 존재한다면 현재 시간과 만료 시간의 차이를 계산하여 남은 TTL 을 반환
 
 ```golang
-func (c *InMemoryCache) Get(ctx context.Context, key string) (any, error) {
-    done := make(chan struct{})
-    var result any
-    var err error
+func (c *InMemoryCache) Exists(_ context.Context, key string) (bool, error) {
+	c.mtx.RLock()
+	defer c.mtx.RUnlock()
 
-    go func() {
-        result, err = c.get(key)
-        close(done)
-    }()
-
-    select {
-    case <-ctx.Done():
-        return nil, ctx.Err()
-    case <-done:
-        return result, err
-    }
-}
-```
-- **나머지 public 함수들의 구현은 위와 같은 구조를 가졌으므로, 공통으로 설명 하겠습니다.**
-- 주어진 key에 대한 캐시 항목을 비동기적으로 조회
-- 고루틴을 사용하여 get 메서드를 호출하고, 결과를 done 채널로 전달
-- 컨텍스트의 만료를 체크함과 동시에 함수를 수행하기 위한 비동기처리
-
-```golang
-func (c *InMemoryCache) Exists(key string) (bool, error) {
-    c.mtx.RLock()
-    defer c.mtx.RUnlock()
-
-    _, exists := c.items[key]
-    return exists, nil
+	_, exists := c.items[key]
+	return exists, nil
 }
 ```
 - 주어진 `key`가 캐시에 존재하는지 확인
@@ -425,6 +316,24 @@ func (c *InMemoryCache) Exists(key string) (bool, error) {
 - 항목이 존재하면 `true`, 그렇지 않으면 `false`
 
 ```golang
+func (c *InMemoryCache) Clear(_ context.Context) error {
+	c.mtx.Lock()
+	defer c.mtx.Unlock()
+
+	c.items = make(map[string]*cacheItem)
+	return nil
+}
+```
+- map 을 초기화 시킴
+
+```golang
 func (c *InMemoryCache) Close() {}
 ```
 - Interface 에 정의된 메서드이나, In-Memory Cache 의 구현체 에서는 선택적 요소 (사용 예 : {c.items = nil} 과 같이 사용해도 되지만, 단, items 가 nil 일 때의 예외처리를 다른 메서드에 추가할 것)
+
+```golang
+func (c *InMemoryCache) Description() string {
+	return "InMemoryCache: A simple in-memory cache implementation"
+}
+```
+- 인스턴스의 기본 설명을 문자열로 반환

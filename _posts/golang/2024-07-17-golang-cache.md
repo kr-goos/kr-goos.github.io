@@ -47,6 +47,7 @@ image:
 ## [Golang] Cache Interface 설계
 - Cache 인터페이스는 다양한 캐시 구현체(In-Memory Cache, Redis Cache 등)를 동일한 방식으로 사용할 수 있도록 설계
 
+### [Cache interface 코드링크](https://github.com/kr-goos/golang_blog/blob/master/internal/cache/cache.go)
 ```golang
 type Cache interface {
 	Get(context.Context, string) (any, error)
@@ -54,9 +55,9 @@ type Cache interface {
 	Delete(context.Context, string) error
 	SetTTL(context.Context, string, time.Duration) error
 	GetTTL(context.Context, string) (time.Duration, error)
-	Exists(string) (bool, error)
-	Clear() error
-	Close()
+	Exists(context.Context, string) (bool, error)
+	Clear(context.Context) error
+	Close() error
 	Description() string
 }
 ```
@@ -64,26 +65,26 @@ type Cache interface {
 ### 설명
 - Get(context.Context, string) (any, error)
     - 역할: 캐시에서 데이터를 읽어옵니다.
-    - 설명: 키를 통해 캐시에서 데이터를 검색합니다. 컨텍스트를 사용하여 요청을 관리하고, 필요 시 취소할 수 있습니다.
+    - 설명: 키를 통해 캐시에서 데이터를 검색합니다. 
 - Set(context.Context, string, any, time.Duration) error
     - 역할: 캐시에 데이터를 저장합니다.
-    - 설명: 주어진 키와 값을 캐시에 저장하며, TTL(Time to Live)을 설정하여 데이터의 유효 기간을 관리합니다. 컨텍스트를 사용하여 요청을 관리합니다.
+    - 설명: 주어진 키와 값을 캐시에 저장하며, TTL(Time to Live)을 설정하여 데이터의 유효 기간을 관리합니다.
 - Delete(context.Context, string) error
     - 역할: 캐시에서 데이터를 삭제합니다.
-    - 설명: 주어진 키에 해당하는 데이터를 캐시에서 삭제합니다. 컨텍스트를 사용하여 요청을 관리합니다.
+    - 설명: 주어진 키에 해당하는 데이터를 캐시에서 삭제합니다. 
 - SetTTL(context.Context, string, time.Duration) error
     - 역할: 이미 존재하는 캐시 항목의 TTL을 설정합니다.
-    - 설명: 특정 키에 대해 TTL을 설정하여 데이터의 유효 기간을 갱신합니다. 컨텍스트를 사용하여 요청을 관리합니다.
+    - 설명: 특정 키에 대해 TTL을 설정하여 데이터의 유효 기간을 갱신합니다. 
 - GetTTL(context.Context, string) (time.Duration, error)
     - 역할: 특정 키에 대한 TTL을 조회합니다.
-    - 설명: 주어진 키에 대한 TTL을 반환하여 데이터의 남은 유효 기간을 확인합니다. 컨텍스트를 사용하여 요청을 관리합니다.
-- Exists(string) (bool, error)
+    - 설명: 주어진 키에 대한 TTL을 반환하여 데이터의 남은 유효 기간을 확인합니다. 
+- Exists(context.Context, string) (bool, error)
     - 역할: 특정 키가 캐시에 존재하는지 확인합니다.
-    - 설명: 주어진 키가 캐시에 존재하는지 여부를 확인합니다. 이 메서드는 컨텍스트를 사용하지 않습니다.
-- Clear() error
+    - 설명: 주어진 키가 캐시에 존재하는지 여부를 확인합니다. 
+- Clear(context.Context) error
     - 역할: 캐시를 비웁니다.
     - 설명: 캐시의 모든 데이터를 삭제합니다. 이 메서드는 캐시를 완전히 비울 때 사용됩니다.
-- Close()
+- Close() error
     - 역할: 캐시 리소스를 정리합니다.
     - 설명: 캐시가 사용 중인 리소스를 정리하고, 필요한 경우 연결을 종료합니다.
 - Description() string
