@@ -56,7 +56,7 @@ image:
 ```
 go version
 ```
-![aptrepo](../assets/img/posts/window-golang-install/go_version.png)
+![aptrepo](../../assets/img/posts/window-golang-install/go_version.png)
 
 ## 5. 간단한 Go 프로그램 실행
 ```go
