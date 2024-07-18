@@ -61,7 +61,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 ```
 
-![aptrepo](../assets/img/posts/ubuntu-docker-install/addaptrepository.png)
+![aptrepo](../../../assets/img/posts/ubuntu-docker-install/addaptrepository.png)
 
 - **참고** : APT 키를 관리하는 더 안전한 방법으로 키를 별도의 키링에 저장
 
@@ -86,14 +86,14 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo docker --version
 ```
 
-![dockerv](../assets/img/posts/ubuntu-docker-install/docker-version.png)
+![dockerv](../../../assets/img/posts/ubuntu-docker-install/docker-version.png)
 
 ## 8. 도커 실행 확인
 ```bash
 sudo docker run hello-world
 ```
 
-![dockerv](../assets/img/posts/ubuntu-docker-install/docker-helloworld.png)
+![dockerv](../../../assets/img/posts/ubuntu-docker-install/docker-helloworld.png)
 
 ### 위 명령어는 다음 단계를 수행
 - Docker Hub에서 hello-world 이미지를 검색
