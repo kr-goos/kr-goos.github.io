@@ -362,7 +362,7 @@ func descriptionHandler(w http.ResponseWriter, r *http.Request) {
 ```
 
 ### REST API 호출을 통한 테스트
-- vscode 를 사용한다면, rest client 확장 설치
+- vscode 를 사용한다면, rest client 확장 설치 후 `xxx.http`
 
 ```
 @serverPath=http://localhost:8080
@@ -410,7 +410,5 @@ GET http://localhost:8080/get?key=your_key
 
 GET http://localhost:8080delete?key=your_key
 ```
-
-## 구현 완료
 
 # [전체코드 링크](https://github.com/kr-goos/golang_blog)
