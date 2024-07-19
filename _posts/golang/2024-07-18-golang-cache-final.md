@@ -9,7 +9,7 @@ image:
   path: /assets/img/posts/window-golang-install/golang.svg
 ---
 
-## dummy cache 란?
+## Dummy cache 란?
 - 실제 캐시 작업을 수행하지 않지만, 캐시 인터페이스를 충족시켜 코드의 다른 부분에서 캐시 동작을 모방할 수 있도록 함
 
 ## [Golang] Dummy Cache 구현
