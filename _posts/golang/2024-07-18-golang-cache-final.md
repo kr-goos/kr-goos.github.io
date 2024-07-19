@@ -193,26 +193,26 @@ DummyCache: A dummy cache implementation that does nothing
 2024/07/18 16:28:34 key : k1 ttl : 0s
 ```
 
-### [In-Memory Cache] `./cache -t=m` 명령 수행
+### [In-Memory Cache] `./cache -t=memory` 명령 수행
 ```bash
-$ ./cache -t=m
+$ ./cache -t=memory
 InMemoryCache: A simple in-memory cache implementation
-2024/07/18 16:47:17 key : k1 , value : in memory cache
-2024/07/18 16:47:17 key : k1 ttl : 2.9373745s
+2024/07/19 14:40:37 key : k1 , value : in memory cache
+2024/07/19 14:40:37 key : k1 ttl : 2.9453377s
 5 second sleep ...
-2024/07/18 16:47:22 'k1' key expired
-2024/07/18 16:47:22 'k1' key not found
+2024/07/19 14:40:42 'k1' key expired
+2024/07/19 14:40:42 'k1' key not found
 ```
 
-### [Redis Cache] `./cache -t=r -a=localhost:6379 -d=0 -p=` 명령 수행
+### [Redis Cache] `./cache -t=redis -a=localhost:6379 -d=0 -p=` 명령 수행
 ```bash
-$ ./cache -t=r -a=localhost:6379 -d=0 -p=
+$ ./cache -t=redis -a=localhost:6379 -d=0 -p=
 RedisCache: A Redis-based cache implementation
-2024/07/18 16:50:09 key : k1 , value : in memory cache
-2024/07/18 16:50:09 key : k1 ttl : 3s
+2024/07/19 14:41:34 key : k1 , value : in memory cache
+2024/07/19 14:41:34 key : k1 ttl : 3s
 5 second sleep ...
-2024/07/18 16:50:14 'k1' key not found
-2024/07/18 16:50:14 'k1' key not found
+2024/07/19 14:41:39 'k1' key not found
+2024/07/19 14:41:39 'k1' key not found
 ```
 
 ## Cache Interface 를 활용한 웹 서버 구현
@@ -363,7 +363,8 @@ func descriptionHandler(w http.ResponseWriter, r *http.Request) {
 
 ### REST API 호출을 통한 테스트
 - vscode 를 사용한다면, rest client 확장 설치
-```rest-client
+
+```rest
 @serverPath=http://localhost:8080
 
 ### setcache
@@ -390,6 +391,7 @@ GET {{serverPath}}/delete?key=your_key
 GET {{serverPath}}/description
 ```
 - Postman 설치 후 이용
+
 ```postman
 POST http://localhost:8080/setcache
 content-type: application/json

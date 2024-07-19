@@ -63,6 +63,20 @@ var (
 - 인터페이스의 구현체에서 사용 할 에러 정의
 
 ```golang
+package cache
+
+import (
+	"context"
+	"time"
+)
+
+// 세 가지 메모리 타입을 정의
+const (
+	INMEMORYCACHE = "memory"
+	REDISCACHE    = "redis"
+	DUMMYCACHE    = "dummy"
+)
+
 type Cache interface {
 	Get(context.Context, string) (any, error)
 	Set(context.Context, string, any, time.Duration) error
@@ -74,6 +88,20 @@ type Cache interface {
 	Close() error
 	Description() string
 }
+
+// cacheType 에 따라, 다른 구현체의 인스턴스를 생성하여
+// Cache interface 로 리턴함
+func NewCache(cacheType string, addr, password string, db int) (Cache, error) {
+	switch cacheType {
+	case INMEMORYCACHE:
+		return NewInMemoryCache(), nil
+	case REDISCACHE:
+		return NewRedisCache(addr, password, db)
+	default:
+		return NewDummyCache(), nil
+	}
+}
+
 ```
 - Get(context.Context, string) (any, error)
     - 역할: 캐시에서 데이터를 읽어옵니다.
