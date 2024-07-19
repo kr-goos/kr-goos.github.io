@@ -364,7 +364,7 @@ func descriptionHandler(w http.ResponseWriter, r *http.Request) {
 ### REST API 호출을 통한 테스트
 - vscode 를 사용한다면, rest client 확장 설치
 
-```rest
+```
 @serverPath=http://localhost:8080
 
 ### setcache
