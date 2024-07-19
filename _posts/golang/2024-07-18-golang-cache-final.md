@@ -371,20 +371,23 @@ POST {{serverPath}}/setcache
 content-type: application/json
 
 {
-  "cacheType": "redis",
+  "cacheType": "memory",
   "addr": "localhost:6379",
   "password": "",
   "db": 0
 }
 
 ### set
-GET {{serverPath}}/set?key=your_key&value=your_value&ttl=5s"
+GET {{serverPath}}/set?key=your_key&value=your_value&ttl=5s
 
 ### get
-GET {{serverPath}}/get?key=your_key"
+GET {{serverPath}}/get?key=your_key
 
 ### delete
-GET {{serverPath}}delete?key=your_key"
+GET {{serverPath}}/delete?key=your_key
+
+### description
+GET {{serverPath}}/description
 ```
 - Postman 설치 후 이용
 ```postman
@@ -398,11 +401,11 @@ content-type: application/json
   "db": 0
 }
 
-GET http://localhost:8080/set?key=your_key&value=your_value&ttl=5s"
+GET http://localhost:8080/set?key=your_key&value=your_value&ttl=5s
 
-GET http://localhost:8080/get?key=your_key"
+GET http://localhost:8080/get?key=your_key
 
-GET http://localhost:8080delete?key=your_key"
+GET http://localhost:8080delete?key=your_key
 ```
 
 ## 구현 완료
