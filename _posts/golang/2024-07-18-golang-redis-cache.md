@@ -1,6 +1,6 @@
 ---
-title: "[GO] Golang 으로 Cache 구현해 보기 3편 Redis Cache"
-description: In-Memory Cache 구현을 알아보겠습니다.
+title: "[GO] Golang 으로 Cache 3편 Redis Cache 구현"
+description: Redis Cache 구현을 알아보겠습니다.
 author: 김우석
 date: 2024-07-18 13:15:00 +0900
 categories: [Golang, Cache, Redis cache]
@@ -37,8 +37,6 @@ image:
 ## [Golang] Redis Cache 구현
 
 - **참고** : RedisCache 구현체를 작성하기 위해선 Redis 서버에 연결하고, Redis 클라이언트 라이브러리를 사용하여 데이터를 다루는 코드 작업이 필요합니다. ([Redis 설치 바로가기](https://github.com/microsoftarchive/redis/releases))
-
-### [Redis Cache 코드링크](https://github.com/kr-goos/golang_blog/blob/master/internal/cache/redis_cache.go)
 
 ```golang
 package cache

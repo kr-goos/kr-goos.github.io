@@ -1,5 +1,5 @@
 ---
-title: "[GO] Golang 으로 Cache 구현해 보기 1편 Cache interface"
+title: "[GO] Golang 으로 Cache 1편 Cache interface 구현"
 description: 캐시란 무엇인지 알아보고 interface 를 구현하는 방법을 알아보겠습니다.
 author: 김우석
 date: 2024-07-17 11:18:00 +0900
@@ -47,7 +47,21 @@ image:
 ## [Golang] Cache Interface 설계
 - Cache 인터페이스는 다양한 캐시 구현체(In-Memory Cache, Redis Cache 등)를 동일한 방식으로 사용할 수 있도록 설계
 
-### [Cache interface 코드링크](https://github.com/kr-goos/golang_blog/blob/master/internal/cache/cache.go)
+### 설명
+
+```golang
+package cache
+
+import "errors"
+
+var (
+	ErrKeyNotFound = errors.New("key not found")
+	ErrKeyExpired  = errors.New("key expired")
+	ErrCacheClosed = errors.New("cache closed")
+)
+```
+- 인터페이스의 구현체에서 사용 할 에러 정의
+
 ```golang
 type Cache interface {
 	Get(context.Context, string) (any, error)
@@ -61,8 +75,6 @@ type Cache interface {
 	Description() string
 }
 ```
-
-### 설명
 - Get(context.Context, string) (any, error)
     - 역할: 캐시에서 데이터를 읽어옵니다.
     - 설명: 키를 통해 캐시에서 데이터를 검색합니다. 
