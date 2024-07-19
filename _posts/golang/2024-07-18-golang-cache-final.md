@@ -390,9 +390,10 @@ GET {{serverPath}}/delete?key=your_key
 ### description
 GET {{serverPath}}/description
 ```
+
 - Postman 설치 후 이용
 
-```postman
+```
 POST http://localhost:8080/setcache
 content-type: application/json
 
