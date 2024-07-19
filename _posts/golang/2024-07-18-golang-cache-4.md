@@ -1,5 +1,5 @@
 ---
-title: "[GO] Golang 으로 Cache 마지막편 Cache를 사용한 웹서버 구현"
+title: "[GO] Golang Cache 4편 - Dummy Cache & Cahe를 사용한 웹서버 구현"
 description: Dummy Cache 구현과 Cache interface 사용을 알아보겠습니다.
 author: 김우석
 date: 2024-07-19 08:45:00 +0900

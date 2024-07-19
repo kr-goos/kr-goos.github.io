@@ -1,5 +1,5 @@
 ---
-title: "[GO] Golang 으로 Cache 2편 In-Memory Cache 구현"
+title: "[GO] Golang Cache 2편 - In-Memory Cache 구현"
 description: In-Memory Cache 구현을 알아보겠습니다.
 author: 김우석
 date: 2024-07-17 13:15:00 +0900
