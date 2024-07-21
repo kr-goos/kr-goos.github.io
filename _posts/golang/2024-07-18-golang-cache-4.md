@@ -171,7 +171,7 @@ func main() {
 - 코드 실행 전 옵션 확인
 ```bash
 $ ./cache -h
-Usage of C:\project\golang_blog\cmd\cache\cache:
+Usage of C:\project\go_cache\cmd\cache\cache:
   -a string
         server address (format: 8.8.8.8:80 ) (default "localhost:6379")
   -d int
@@ -411,4 +411,4 @@ GET http://localhost:8080/get?key=your_key
 GET http://localhost:8080delete?key=your_key
 ```
 
-# [전체코드 링크](https://github.com/kr-goos/golang_blog)
+# [전체코드 링크](https://github.com/kr-goos/go_cache)
