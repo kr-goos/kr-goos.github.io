@@ -103,12 +103,12 @@ func solution2(name []string, yearning []int, photo [][]string) []int {
 - map의 조회는 평균적으로 `O(1)의 시간 복잡도`를 가지므로, 각 이름의 점수를 빠르게 가져올 수 있음
 
 ## 유닛 & 벤치마크 테스트
-- **각 테스트코드에 삽입된 {% comment %} 와 {% endcomment %} 는 코드에서 제거해 주시기 바랍니다.**
+- **각 테스트코드에 삽입된 `\` 는 코드에서 제거해 주시기 바랍니다.**
 ### 유닛 테스트
 ```golang
 func TestSolution(t *testing.T) {
 	const TEST_COUNT = 3
-    {% comment %}
+    
 	nameTestCases := [TEST_COUNT][]string{
 		{"may", "kein", "kain", "radi"},
 		{"kali", "mari", "don"},
@@ -121,9 +121,9 @@ func TestSolution(t *testing.T) {
 	}
 
 	photoTestCases := [TEST_COUNT][][]string{
-		{{"may", "kein", "kain", "radi"}, {"may", "kein", "brin", "deny"}, {"kon", "kain", "may", "coni"}},
-		{{"kali", "mari", "don"}, {"pony", "tom", "teddy"}, {"con", "mona", "don"}},
-		{{"may"}, {"kein", "deny", "may"}, {"kon", "coni"}},
+		\{\{"may", "kein", "kain", "radi"}, {"may", "kein", "brin", "deny"}, {"kon", "kain", "may", "coni"\}\},
+		\{\{"kali", "mari", "don"}, {"pony", "tom", "teddy"}, {"con", "mona", "don"\}\},
+		\{\{"may"}, {"kein", "deny", "may"}, {"kon", "coni"\}\},
 	}
     
 	successResult := [TEST_COUNT][]int{
@@ -131,7 +131,6 @@ func TestSolution(t *testing.T) {
 		{67, 0, 55},
 		{5, 15, 0},
 	}
-    {% endcomment %}
 
 	for i := 0; i < TEST_COUNT; i++ {
 		fmt.Println("nameTestCase :", nameTestCases[i])
@@ -146,7 +145,7 @@ func TestSolution(t *testing.T) {
 
 func TestSolution2(t *testing.T) {
 	const TEST_COUNT = 3
-    {% comment %}
+    
 	nameTestCases := [TEST_COUNT][]string{
 		{"may", "kein", "kain", "radi"},
 		{"kali", "mari", "don"},
@@ -159,9 +158,9 @@ func TestSolution2(t *testing.T) {
 	}
 
 	photoTestCases := [TEST_COUNT][][]string{
-		{{"may", "kein", "kain", "radi"}, {"may", "kein", "brin", "deny"}, {"kon", "kain", "may", "coni"}},
-		{{"kali", "mari", "don"}, {"pony", "tom", "teddy"}, {"con", "mona", "don"}},
-		{{"may"}, {"kein", "deny", "may"}, {"kon", "coni"}},
+		\{\{"may", "kein", "kain", "radi"}, {"may", "kein", "brin", "deny"}, {"kon", "kain", "may", "coni"\}\},
+		\{\{"kali", "mari", "don"}, {"pony", "tom", "teddy"}, {"con", "mona", "don"\}\},
+		\{\{"may"}, {"kein", "deny", "may"}, {"kon", "coni"\}\},
 	}
 
 	successResult := [TEST_COUNT][]int{
@@ -169,7 +168,6 @@ func TestSolution2(t *testing.T) {
 		{67, 0, 55},
 		{5, 15, 0},
 	}
-    {% endcomment %}
 
 	for i := 0; i < TEST_COUNT; i++ {
 		fmt.Println("nameTestCase :", nameTestCases[i])
@@ -222,7 +220,7 @@ ok      golang-coding-test/Lv1/memory_score     0.130s
 ### 벤치마크 테스트
 ```golang
 func BenchmarkSolution(b *testing.B) {
-    {% comment %}
+    
 	nameTestCase := []string{
 		"may", "kein", "kain", "radi",
 	}
@@ -233,7 +231,6 @@ func BenchmarkSolution(b *testing.B) {
 	photoTestCase := [][]string{
 		{"may", "kein", "kain", "radi"}, {"may", "kein", "brin", "deny"}, {"kon", "kain", "may", "coni"},
 	}
-    {% endcomment %}
 
 	for i := 0; i < b.N; i++ {
 		_ = solution(nameTestCase, yearningTestCase, photoTestCase)
@@ -241,7 +238,7 @@ func BenchmarkSolution(b *testing.B) {
 }
 
 func BenchmarkSolution2(b *testing.B) {
-    {% comment %}
+    
 	nameTestCase := []string{
 		"may", "kein", "kain", "radi",
 	}
@@ -252,7 +249,6 @@ func BenchmarkSolution2(b *testing.B) {
 	photoTestCase := [][]string{
 		{"may", "kein", "kain", "radi"}, {"may", "kein", "brin", "deny"}, {"kon", "kain", "may", "coni"},
 	}
-    {% endcomment %}
 
 	for i := 0; i < b.N; i++ {
 		_ = solution2(nameTestCase, yearningTestCase, photoTestCase)
