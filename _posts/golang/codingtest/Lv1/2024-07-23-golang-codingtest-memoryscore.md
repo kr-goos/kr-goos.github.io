@@ -3,7 +3,7 @@ title: "[Golang] 프로그래머스 Lv.1 추억점수"
 description: 추억점수 문제에 대해 풀이하고, 테스트해 보겠습니다.
 author: 김우석
 date: 2024-07-23 08:45:00 +0900
-categories: [Golang, Cache]
+categories: [Golang, CodingTest]
 tags: [Golang, Go, Go언어, 코딩테스트]
 image:
   path: /assets/img/posts/window-golang-install/golang.svg
