@@ -28,11 +28,13 @@ image:
     - `photo[i]`의 원소들은 중복된 값이 들어가지 않습니다.
 
 ## 입출력 예
+{% raw %}
 |name|yearning|photo|result|
 |-|-|-|-|
 |["may", "kein", "kain", "radi"]|[5, 10, 1, 3]|[["may", "kein", "kain", "radi"],["may", "kein", "brin", "deny"], ["kon", "kain", "may", "coni"]]|[19, 15, 6]|
 |["kali", "mari", "don"]|[11, 1, 55]|[["kali", "mari", "don"], ["pony", "tom", "teddy"], ["con", "mona", "don"]]|[67, 0, 55]|
 |["may", "kein", "kain", "radi"]|[5, 10, 1, 3]|[["may"],["kein", "deny", "may"], ["kon", "coni"]]|[5, 15, 0]|
+{% endraw %}
 
 ## 입출력 예 설명
 입출력 예 #1
@@ -103,9 +105,9 @@ func solution2(name []string, yearning []int, photo [][]string) []int {
 - map의 조회는 평균적으로 `O(1)의 시간 복잡도`를 가지므로, 각 이름의 점수를 빠르게 가져올 수 있음
 
 ## 유닛 & 벤치마크 테스트
-- **각 테스트코드에 삽입된 `\` 는 코드에서 제거해 주시기 바랍니다.**
 ### 유닛 테스트
 ```golang
+{% raw %}
 func TestSolution(t *testing.T) {
 	const TEST_COUNT = 3
     
@@ -121,9 +123,9 @@ func TestSolution(t *testing.T) {
 	}
 
 	photoTestCases := [TEST_COUNT][][]string{
-		\{\{"may", "kein", "kain", "radi"}, {"may", "kein", "brin", "deny"}, {"kon", "kain", "may", "coni"\}\},
-		\{\{"kali", "mari", "don"}, {"pony", "tom", "teddy"}, {"con", "mona", "don"\}\},
-		\{\{"may"}, {"kein", "deny", "may"}, {"kon", "coni"\}\},
+		{{"may", "kein", "kain", "radi"}, {"may", "kein", "brin", "deny"}, {"kon", "kain", "may", "coni"}},
+		{{"kali", "mari", "don"}, {"pony", "tom", "teddy"}, {"con", "mona", "don"}},
+		{{"may"}, {"kein", "deny", "may"}, {"kon", "coni"}},
 	}
     
 	successResult := [TEST_COUNT][]int{
@@ -158,9 +160,9 @@ func TestSolution2(t *testing.T) {
 	}
 
 	photoTestCases := [TEST_COUNT][][]string{
-		\{\{"may", "kein", "kain", "radi"}, {"may", "kein", "brin", "deny"}, {"kon", "kain", "may", "coni"\}\},
-		\{\{"kali", "mari", "don"}, {"pony", "tom", "teddy"}, {"con", "mona", "don"\}\},
-		\{\{"may"}, {"kein", "deny", "may"}, {"kon", "coni"\}\},
+		{{"may", "kein", "kain", "radi"}, {"may", "kein", "brin", "deny"}, {"kon", "kain", "may", "coni"}},
+		{{"kali", "mari", "don"}, {"pony", "tom", "teddy"}, {"con", "mona", "don"}},
+		{{"may"}, {"kein", "deny", "may"}, {"kon", "coni"}},
 	}
 
 	successResult := [TEST_COUNT][]int{
@@ -179,6 +181,7 @@ func TestSolution2(t *testing.T) {
 	}
 
 }
+{% endraw %}
 ```
 
 ```bash
