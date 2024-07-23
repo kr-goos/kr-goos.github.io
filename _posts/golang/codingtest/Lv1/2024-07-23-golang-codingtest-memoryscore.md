@@ -4,7 +4,7 @@ description: 추억점수 문제에 대해 풀이하고, 테스트해 보겠습�
 author: 김우석
 date: 2024-07-23 08:45:00 +0900
 categories: [Golang, Cache]
-tags: [Golang, Go, Go언어, Cache, interface]
+tags: [Golang, Go, Go언어, 코딩테스트]
 image:
   path: /assets/img/posts/window-golang-install/golang.svg
 ---
