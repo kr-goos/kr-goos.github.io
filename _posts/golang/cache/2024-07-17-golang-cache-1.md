@@ -1,5 +1,5 @@
 ---
-title: "[GO] Golang Cache 1편 - Cache interface 구현"
+title: "[Golang] Cache 1편 - Cache interface 구현"
 description: 캐시란 무엇인지 알아보고 interface 를 구현하는 방법을 알아보겠습니다.
 author: 김우석
 date: 2024-07-17 11:18:00 +0900

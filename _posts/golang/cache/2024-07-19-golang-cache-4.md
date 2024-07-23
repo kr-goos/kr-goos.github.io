@@ -1,5 +1,5 @@
 ---
-title: "[GO] Golang Cache 4편 - Dummy Cache & Cahe를 사용한 웹서버 구현"
+title: "[Golang] Cache 4편 - Dummy Cache & Cahe를 사용한 웹서버 구현"
 description: Dummy Cache 구현과 Cache interface 사용을 알아보겠습니다.
 author: 김우석
 date: 2024-07-19 08:45:00 +0900
@@ -411,4 +411,4 @@ GET http://localhost:8080/get?key=your_key
 GET http://localhost:8080delete?key=your_key
 ```
 
-# [전체코드 링크](https://github.com/kr-goos/go_cache)
+# [Github 바로가기](https://github.com/kr-goos/go_cache)
