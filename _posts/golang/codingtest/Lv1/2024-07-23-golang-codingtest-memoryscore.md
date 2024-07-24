@@ -1,10 +1,10 @@
 ---
 title: "[Golang] 프로그래머스 Lv.1 추억점수"
-description: 추억점수 문제에 대해 풀이하고, 테스트해 보겠습니다.
+description: 추억점수 문제에 대해 풀이하고, 유닛 & 벤치마크 테스트를 해보겠습니다.
 author: 김우석
 date: 2024-07-23 08:45:00 +0900
 categories: [Golang, CodingTest]
-tags: [Golang, Go, Go언어, 코딩테스트]
+tags: [Golang, Go, Go언어, 코딩테스트, UnitTest, BenchmarkTest, Testcode]
 image:
   path: /assets/img/posts/window-golang-install/golang.svg
 ---
@@ -185,7 +185,8 @@ func TestSolution2(t *testing.T) {
 ```
 
 ```bash
-$ go test
+$ go test -v
+=== RUN   TestSolution
 nameTestCase : [may kein kain radi]
 yearningTestCase : [5 10 1 3]
 photoTestCase : [[may kein kain radi] [may kein brin deny] [kon kain may coni]]
@@ -201,6 +202,8 @@ yearningTestCase : [5 10 1 3]
 photoTestCase : [[may] [kein deny may] [kon coni]]
 result := [5 15 0]
 successResult := [5 15 0]
+--- PASS: TestSolution (0.01s)
+=== RUN   TestSolution2
 nameTestCase : [may kein kain radi]
 yearningTestCase : [5 10 1 3]
 photoTestCase : [[may kein kain radi] [may kein brin deny] [kon kain may coni]]
@@ -216,8 +219,9 @@ yearningTestCase : [5 10 1 3]
 photoTestCase : [[may] [kein deny may] [kon coni]]
 result := [5 15 0]
 successResult := [5 15 0]
+--- PASS: TestSolution2 (0.01s)
 PASS
-ok      golang-coding-test/Lv1/memory_score     0.130s
+ok      golang-coding-test/Lv1/memory_score     0.213s
 ```
 
 ### 벤치마크 테스트
@@ -263,10 +267,6 @@ func BenchmarkSolution2(b *testing.B) {
 ```bash
 $ go test -bench . -benchtime 100000x
 ...
-goos: windows
-goarch: amd64
-pkg: golang-coding-test/Lv1/memory_score
-cpu: AMD EPYC 7642 48-Core Processor
 BenchmarkSolution-4       100000               272.1 ns/op
 BenchmarkSolution2-4      100000               369.8 ns/op
 PASS
