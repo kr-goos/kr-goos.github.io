@@ -6,7 +6,7 @@ date: 2024-07-24 08:30:00 +0900
 categories: [Golang, CodingTest]
 tags: [Golang, Go, Go언어, 코딩테스트, UnitTest, BenchmarkTest, Testcode]
 image:
-  path: /assets/img/posts/window-golang-install/golang.svg
+  path: /assets/img/posts/golang/golang.svg
 ---
 
 ## 문제 설명
@@ -199,7 +199,7 @@ ok      golang-coding-test/Lv1/running_race     0.214s
 	- go 언어에서는 슬라이스 복사의 경우 기본적으로 얕은 복사를 수행하므로, 이를 고려해 보아야 합니다.
 		- `얕은복사` : 슬라이스의 복사본이 원본 슬라이스와 같은 배열을 참조
 
-		
+
 ```golang
 {% raw %}
 const letterBytes = "abcdefghijklmnopqrstuvwxyz"

@@ -6,7 +6,7 @@ date: 2024-07-18 13:15:00 +0900
 categories: [Golang, Cache, Redis cache]
 tags: [Golang, Go, Go언어, Cache, Redis]
 image:
-  path: /assets/img/posts/window-golang-install/golang.svg
+  path: /assets/img/posts/golang/golang.svg
 ---
 
 ## Redis 란?
