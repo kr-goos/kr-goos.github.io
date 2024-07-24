@@ -260,9 +260,9 @@ func (c *RedisCache) Description() string {
 
 ### 코드 실행 전 확인사항
 1. 작업 관리자 실행 후 서비스 탭에서 Redis 실행 중 확인
-![aptrepo](../../../assets/img/posts/golang-redis-cache/process-check.png)
+![aptrepo](../../../assets/img/posts/golang/cache/golang-cache-3-redis/process-check.png)
 2. redis 설치경로에 있는 redis-cli 를 이용한 ping/pong 확인 (기본 경로 : `:\Program Files\Redis`)
-![aptrepo](../../../assets/img/posts/golang-redis-cache/redis-cli-ping.png)
+![aptrepo](../../../assets/img/posts/golang/cache/golang-cache-3-redis/redis-cli-ping.png)
 3. NewRedisCache unit test
 
 ```golang

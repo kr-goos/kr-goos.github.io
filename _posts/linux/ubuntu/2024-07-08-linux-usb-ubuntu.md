@@ -6,7 +6,7 @@ date: 2024-07-08 16:17:00 +0900
 categories: [Linux, Ubuntu, Mount]
 tags: [Linux, Ubuntu, Mount]
 image:
-  path: /assets/img/posts/linux-usb/server-usb.jpeg
+  path: /assets/img/posts/linux/ubuntu/linux-usb-ubuntu/server-usb.jpeg
 ---
 
 ## 0. USB 삽입
