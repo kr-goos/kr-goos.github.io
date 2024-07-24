@@ -45,7 +45,7 @@ image:
 
 첫 번째 사진 속 그리워하는 사람들인 "kali", "mari", "don"의 그리움 점수를 합치면 67(11 + 1 + 55)점입니다. 두 번째 사진 속엔 그리워하는 인물이 없으므로 0점입니다. 세 번째 사진 속 그리워하는 사람은 "don"만 있으므로 55점입니다. 따라서 [67, 0, 55]를 반환합니다.
 
-## 풀이 [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/memory_score)
+## 풀이 
 ### 파라미터를 그대로 이용한 방법
 ```golang
 func solution(name []string, yearning []int, photo [][]string) []int {
@@ -273,3 +273,5 @@ PASS
 ok      golang-coding-test/Lv1/memory_score     0.225s
 ```
 - 벤치마크 테스트에서 사용하는 데이터의 크기와 복잡성에 따라 두 함수의 성능 차이가 다를 수 있습니다. 특히 map을 사용하는 solution2 함수는 많은 양의 데이터를 처리할 때 성능 이점을 가지지만, 작은 데이터 세트에서는 오히려 오버헤드가 클 수 있습니다.
+
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/memory_score)

@@ -36,7 +36,7 @@ image:
 
 4등인 "kai" 선수가 2번 추월하여 2등이 되고 앞서 3등, 2등인 "poe", "soe" 선수는 4등, 3등이 됩니다. 5등인 "mine" 선수가 2번 추월하여 4등, 3등인 "poe", "soe" 선수가 5등, 4등이 되고 경주가 끝납니다. 1등부터 배열에 담으면 ["mumu", "kai", "mine", "soe", "poe"]이 됩니다.
 
-## 풀이 [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/running_race)
+## 풀이 
 ### 파라미터를 그대로 이용한 방법
 ```golang
 func solution(players []string, callings []string) []string {
@@ -199,6 +199,7 @@ ok      golang-coding-test/Lv1/running_race     0.214s
 	- go 언어에서는 슬라이스 복사의 경우 기본적으로 얕은 복사를 수행하므로, 이를 고려해 보아야 합니다.
 		- `얕은복사` : 슬라이스의 복사본이 원본 슬라이스와 같은 배열을 참조
 ```golang
+{% raw %}
 const letterBytes = "abcdefghijklmnopqrstuvwxyz"
 
 func randString(n int) string {
@@ -243,7 +244,10 @@ func BenchmarkSolution3(b *testing.B) {
 		b.StopTimer() // 벤치마크 타이머를 멈추고 후처리 작업을 할 수 있습니다.
 	}
 }
+{% endraw %}
 ```
 - `b.ResetTimer()` 작동 방식
 	- 타이머 리셋: b.ResetTimer()를 호출하면, 이후의 코드 실행 시간이 벤치마크 측정에 포함됩니다. 이전의 코드 실행 시간(준비 작업 등)은 측정에 포함되지 않습니다.
 	- 측정 시점: b.ResetTimer()를 호출한 시점부터 벤치마크 루프의 각 반복에서 b.N만큼의 반복에 대해 정확한 시간을 측정합니다.
+
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/running_race)
