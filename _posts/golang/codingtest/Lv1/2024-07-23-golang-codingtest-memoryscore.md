@@ -1,6 +1,6 @@
 ---
 title: "[Golang] 프로그래머스 Lv.1 추억점수"
-description: 추억점수 문제에 대해 풀이하고, 유닛 & 벤치마크 테스트를 해보겠습니다.
+description: 추억점수 문제에 대해 풀이하고 테스트 코드를 작성 해보겠습니다.
 author: 김우석
 date: 2024-07-23 08:45:00 +0900
 categories: [Golang, CodingTest]
@@ -104,7 +104,7 @@ func solution2(name []string, yearning []int, photo [][]string) []int {
 - photo 배열을 순회하면서 이름을 map에서 직접 조회
 - map의 조회는 평균적으로 `O(1)의 시간 복잡도`를 가지므로, 각 이름의 점수를 빠르게 가져올 수 있음
 
-## 유닛 & 벤치마크 테스트
+## 테스트코드
 ### 유닛 테스트
 ```golang
 {% raw %}

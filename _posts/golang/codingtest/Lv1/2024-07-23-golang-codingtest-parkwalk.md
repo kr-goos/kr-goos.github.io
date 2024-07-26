@@ -65,13 +65,6 @@ image:
 
 ## 풀이 
 ```golang
-package parkwalk
-
-import (
-	"strconv"
-	"strings"
-)
-
 const (
 	// park constant
 	START      = "S"
@@ -222,16 +215,9 @@ func solution(park []string, routes []string) []int {
 	- **IsMovePossible** : 주어진 방향(`cmd`)과 거리(`distance`)로 이동이 가능한지 확인
 	- **Move** : 주어진 방향(`cmd`)과 거리(`distance`)로 로봇을 이동
 
-## 유닛 테스트
+## 테스트코드
+### 유닛테스트
 ```golang
-package parkwalk
-
-import (
-	"fmt"
-	"log"
-	"testing"
-)
-
 func TestSetParkPosition(t *testing.T) {
 	parkTestcases := [][]string{
 		{"SOO", "OOO", "OOO"},

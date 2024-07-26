@@ -1,6 +1,6 @@
 ---
 title: "[Golang] 프로그래머스 Lv.1 달리기 경주"
-description: 달리기 경주 문제에 대해 풀이하고, 유닛 & 벤치마크 테스트를 해보겠습니다.
+description: 달리기 경주 문제에 대해 풀이하고 테스트 코드를 작성 해보겠습니다.
 author: 김우석
 date: 2024-07-24 08:30:00 +0900
 categories: [Golang, CodingTest]
@@ -85,7 +85,7 @@ func stringSliceToIndexMap(arr []string) map[string]int {
 	- `m`은 `callings` 리스트의 길이, `n`은 `players` 리스트의 길이
 	- 데이터셋이 클수록 더 효율적
 
-## 유닛 & 벤치마크 테스트
+## 테스트코드
 ### 유닛 테스트
 ```golang
 {% raw %}
