@@ -74,6 +74,7 @@ image:
 모든 파일을 선택하기 위해선 바탕화면의 가장 왼쪽 위 (0, 0)에서 가장 오른쪽 아래 (7, 9)로 드래그 해야만 합니다. 따라서 [0, 0, 7, 9]를 return합니다.
 
 입출력 예 #4
+
 - 예제 4번의 바탕화면은 다음과 같이 2행 1열에만 아이콘이 있습니다.
 
 ![image](../../../../assets/img/posts/golang/codingtest/golang-coding-test-desktopcleanup/image5.png)
