@@ -116,7 +116,24 @@ func solution(wallpaper []string) []int {
 	- 제한사항의 조건을 보고 크기 지정
 		- 1 ≤ `wallpaper`의 길이 ≤ 50
 		- 1 ≤ `wallpaper[i]`의 길이 ≤ 50
-- wallpaper 전체 순회를 이용한 좌표 구하기
+- wallpaper 전체 순회를 이용 (배열 전체 1회 스캔)
+	- 파일이 존재하는 좌표의 배열 인덱스 구하기
+		- x 최솟값
+			- `if lux > i {
+				lux = i
+			}`
+		- x 최댓값
+			- `if rdx < i {
+				rdx = i
+			}`
+		- y 최솟값
+			- `if luy > j {
+				luy = j
+			}`
+		- y 최댓값
+			- `if rdy < j {
+				rdy = j
+			}`
 - 함수 return 좌표값 배열에서 rdx + 1 및 rdy + 1을 수행하는 이유는 범위가 0부터 시작하므로, 마지막 좌표는 포함되지 않기 때문에 1을 더해줌
 
 
