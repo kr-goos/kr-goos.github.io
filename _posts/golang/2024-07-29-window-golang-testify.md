@@ -2,9 +2,9 @@
 title: "[GO] Golang 유닛테스트 패키지 testify"
 description: golang 에서 패키지를 이용해 유닛테스트 하는 방법을 알아보겠습니다.
 author: 김우석
-date: 2024-07-10 09:00:00 +0900
-categories: [Golang, Install]
-tags: [Window, Go, Golang, go언어]
+date: 2024-07-29 21:08:00 +0900
+categories: [Golang, UnitTest]
+tags: [Go, Golang, go언어, UnitTest]
 image:
   path: /assets/img/posts/golang/golang.svg
 ---
