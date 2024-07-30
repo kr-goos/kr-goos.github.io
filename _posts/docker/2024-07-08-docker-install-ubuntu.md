@@ -27,7 +27,7 @@ sudo apt-get install apt-transport-https ca-certificates curl software-propertie
 
 ## 3. Docker 공식 GPG 키 추가
 ### [방법 1] 키를 APT 저장소에 추가
-- Docker 공식 GPG 키 다운로드 | 다운로드 된 GPG키 APT 저장소에 추가
+- Docker 공식 GPG 키 다운로드 \| 다운로드 된 GPG키 APT 저장소에 추가
 
 ```bash
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
