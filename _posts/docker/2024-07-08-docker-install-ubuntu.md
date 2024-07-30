@@ -34,8 +34,6 @@ sudo apt-get install apt-transport-https ca-certificates curl software-propertie
 # Docker 공식 GPG 키 다운로드 | 다운로드 된 GPG키 APT 저장소에 추가
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-# Docker 공식 GP
-
 # curl option 설명
 # -f (fail) : 요청이 실패(400번대 또는 500번대 오류)할 경우 아무런 데이터를 출력하지 않음
 # -s (silent) : curl의 출력을 조용하게 만듦 (진행 상황이나 오류 메시지 같은 진단 정보를 표시하지 않음)
