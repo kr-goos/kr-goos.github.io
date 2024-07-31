@@ -33,15 +33,15 @@ image:
 {% endraw %}
 
 ## 입출력 예 설명
-입출력 예 #1
+**입출력 예 #1**
 
 `s`="banana"인 경우 ba - na - na와 같이 분해됩니다.
 
-입출력 예 #2
+**입출력 예 #2**
 
 `s`="abracadabra"인 경우 ab - ra - ca - da - br - a와 같이 분해됩니다.
 
-입출력 예 #3
+**입출력 예 #3**
 
 `s`="aaabbaccccabba"인 경우 aaabbacc - ccab - ba와 같이 분해됩니다.
 
