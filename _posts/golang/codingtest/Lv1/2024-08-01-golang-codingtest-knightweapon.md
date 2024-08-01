@@ -43,7 +43,7 @@ image:
 
 ## 풀이 
 
-### Before
+### 개선 전
 ```golang
 func solution(number int, limit int, power int) int {
 	var total int
@@ -72,18 +72,18 @@ func solution(number int, limit int, power int) int {
 	- `if i%j != 0 { continue }` 조건문은 현재 숫자가 약수가 아닌 경우를 건너뜀
 	- `weight++`는 약수를 찾을 때마다 증가
 	- `if weight > limit` 조건문은 약수의 개수가 제한수를 초과할 경우 `weight`를 `power`로 설정하고 루프를 종료
-- `total += weight`는 계산된 weight를 total에 더함
+- `total += weight`는 계산된 `weight`를 `total`에 더함
 - `total`을 반환
 
 ```
 위 코드를 프로그래머스에서 실행한 경우 `실패 (시간 초과)` 과 같은 에러를 마주할 수 있습니다. 
 이 `solution` 함수는 모든 수에 대해 1부터 자신까지의 모든 숫자를 검사하여 약수를 구합니다.
 이와 같은 방법은 비 효율적이며 시간이 오래 걸립니다.
-
-이 코드를 개선하는 방법을 알아보겠습니다.
 ```
 
-### After
+이 코드를 개선하는 방법을 알아보겠습니다.
+
+### 개선 후
 ```golang
 func solution(number int, limit int, power int) int {
 	var total int
