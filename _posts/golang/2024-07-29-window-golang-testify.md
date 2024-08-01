@@ -4,7 +4,7 @@ description: golang 에서 패키지를 이용해 유닛테스트 하는 방법�
 author: 김우석
 date: 2024-07-29 21:08:00 +0900
 categories: [Golang, UnitTest]
-tags: [Go, Golang, go언어, UnitTest]
+tags: [Go, Golang, UnitTest]
 image:
   path: /assets/img/posts/golang/golang.svg
 ---
