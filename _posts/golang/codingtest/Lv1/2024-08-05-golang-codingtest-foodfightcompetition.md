@@ -150,46 +150,42 @@ var (
 )
 
 func TestSolution(t *testing.T) {
-	const TESTCOUNT = 2
-	k := [TESTCOUNT]int{3, 4}
-	m := [TESTCOUNT]int{4, 3}
-	score := [TESTCOUNT][]int{
-		{1, 2, 3, 1, 2, 3, 1},
-		{4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2},
-	}
-	success := [TESTCOUNT]int{8, 33}
-
 	for i := 0; i < TESTCOUNT; i++ {
-		fmt.Println("k[i] : ", k[i])
-		fmt.Println("m[i] : ", m[i])
-		fmt.Println("score[i] : ", score[i])
-		fmt.Println("success[i] : ", success[i])
-		fmt.Println("solution result : ", solution(k[i], m[i], score[i]))
+		fmt.Println("food[i] : ", food[i])
+		fmt.Println("result[i] : ", result[i])
+		fmt.Println("my solution result : ", solution(food[i]))
 	}
 }
 
+func TestImprovedSolution(t *testing.T) {
+	for i := 0; i < TESTCOUNT; i++ {
+		fmt.Println("food[i] : ", food[i])
+		fmt.Println("result[i] : ", result[i])
+		fmt.Println("my solution result : ", ImprovedSolution(food[i]))
+	}
+}
 ```
 
 ```bash
 $ go test -v
 === RUN   TestSolution
-food[i] :  0 [1 3 4 6]
-result   :  1223330333221
+food[i] :  [1 3 4 6]
+result[i] :  1223330333221
 my solution result :  1223330333221
-food[i] :  1 [1 7 1 2]
-result   :  111303111
+food[i] :  [1 7 1 2]
+result[i] :  111303111
 my solution result :  111303111
 --- PASS: TestSolution (0.00s)
 === RUN   TestImprovedSolution
-food[i] :  0 [1 3 4 6]
-result   :  1223330333221
+food[i] :  [1 3 4 6]
+result[i] :  1223330333221
 my solution result :  1223330333221
-food[i] :  1 [1 7 1 2]
-result   :  111303111
+food[i] :  [1 7 1 2]
+result[i] :  111303111
 my solution result :  111303111
---- PASS: TestImprovedSolution (0.00s)
+--- PASS: TestImprovedSolution (0.01s)
 PASS
-ok      golang-coding-test/Lv1/food_fight_competition   0.134s
+ok      golang-coding-test/Lv1/food_fight_competition   0.270s
 ```
 
 ### 벤치마크 테스트
