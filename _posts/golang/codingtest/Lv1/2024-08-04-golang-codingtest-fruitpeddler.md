@@ -1,6 +1,6 @@
 ---
 title: "[Golang] 프로그래머스 Lv.1 과일 장수"
-description: 과일 장수 무기 문제에 대해 풀이하고 테스트 코드를 작성 해보겠습니다.
+description: 과일 장수 문제에 대해 풀이하고 테스트 코드를 작성 해보겠습니다.
 author: 김우석
 date: 2024-08-04 21:30:05 +0900
 categories: [Golang, CodingTest]
