@@ -2,7 +2,7 @@
 title: "[Golang] 프로그래머스 Lv.1 콜라 문제"
 description: 콜라 문제에 대해 풀이하고 테스트 코드를 작성 해보겠습니다.
 author: 김우석
-date: 2024-08-06 08:30:03 +0900
+date: 2024-08-07 08:30:03 +0900
 categories: [Golang, CodingTest]
 tags: [Golang, Go, Go언어, 코딩테스트, UnitTest, BenchmarkTest, Testcode]
 image:
