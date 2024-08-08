@@ -45,6 +45,7 @@ image:
 **입출력 예 #3**
 - 삼총사가 될 수 있는 방법이 없습니다.
 
+
 ## 풀이 
 ```golang
 func solution(number []int) int {
