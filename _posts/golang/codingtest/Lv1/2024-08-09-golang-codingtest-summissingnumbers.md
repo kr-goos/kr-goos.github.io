@@ -93,7 +93,6 @@ func TestSolution(t *testing.T) {
 
 ```bash
 $ go test -v
-$ go test -v
 === RUN   TestSolution
 testcase 1 sucecss
 testcase 2 sucecss
