@@ -58,10 +58,9 @@ func solution(absolutes []int, signs []bool) int {
 }
 ```
 
-- `lottos` 의 값을 `win_nums` 배열에서 찾으려 할 땐 시간복잡도가 `O(n)`이지만 맵으로 생성하여 검색 할 경우 `O(1)` 이므로 맵으로 생성
-- `lottos`를 순회하며 값이 0 이면 `zeroCount` 변수를 증가시키고, 위에서 생성한 Map 에 `num` 이 존재한다면, `matchingCount` 값을 증가시킴
-- `getRanking` 함수를 이용해 `matchingCount + zeroCount`(일치 최대 개수) 와 `matchingCount`(일치 최소 개수) 의 순위를 반환
-
+- `absolutes` 를 순회하며, 현재 절댓값이 음수인지 양수인지 `signs[i]`로 확인
+- 만약 부호가 음수일 경우, 현재 `v` 의 값이 -1 을 곱해줌
+- 부호가 정해진 `v` 값을 `total` 에 더해줌
 
 ## 테스트코드
 ### 유닛 테스트
