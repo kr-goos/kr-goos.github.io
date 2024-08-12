@@ -1,6 +1,6 @@
 ---
-title: "[Golang] 프로그래머스 Lv.1 음양 더하기"
-description: 음양 더하기 문제에 대해 풀이하고 테스트 코드를 작성 해보겠습니다.
+title: "[Golang] 프로그래머스 Lv.1 내적"
+description: 내적 문제에 대해 풀이하고 테스트 코드를 작성 해보겠습니다.
 author: 김우석
 date: 2024-08-12 08:50:03 +0900
 categories: [Golang, CodingTest]
