@@ -2,7 +2,7 @@
 title: "[Golang] 프로그래머스 Lv.1 2021 카카오 채용연계형 인턴십 숫자 문자열과 영단어"
 description: 숫자 문자열과 영단어 문제에 대해 풀이하고 테스트 코드를 작성 해보겠습니다.
 author: 김우석
-date: 2024-08-10 22:40:03 +09000
+date: 2024-08-10 22:40:03 +0900
 categories: [Golang, CodingTest]
 tags: [Golang, Go, Go언어, 코딩테스트, UnitTest, BenchmarkTest, Testcode]
 image:
