@@ -2,7 +2,7 @@
 title: "[Golang] 프로그래머스 Lv.1 소수 만들기"
 description: 소수 만들기 문제에 대해 풀이하고 테스트 코드를 작성 해보겠습니다.
 author: 김우석
-date: 2024-08-13 07:40:03 +0900
+date: 2024-08-13 08:20:03 +0900
 categories: [Golang, CodingTest]
 tags: [Golang, Go, Go언어, 코딩테스트, UnitTest, BenchmarkTest, Testcode]
 image:
@@ -113,4 +113,4 @@ PASS
 ok      golang-coding-test/Lv1/make_prime       0.217s
 ```
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/kth_number.go)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/make_prime)
