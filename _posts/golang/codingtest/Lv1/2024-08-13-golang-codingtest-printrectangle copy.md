@@ -47,7 +47,7 @@ func solution(phone_number string) string {
 - `i`를 0 부터 `len(phone_number)-4` 까지 순회
 	- `sb.WriteString` 을 이용하여 `"*"`를 `sb`의 버퍼에 추가
 - 순회가 끝나면, `phone_number` 슬라이스의 마지막 문자 4개를 슬라이싱하여 `sb`의 버퍼에 추가
-- sb 버퍼에 쌓인 문자열을 반환
+- `sb` 버퍼에 쌓인 문자열을 반환
 
 
 ## 테스트코드
