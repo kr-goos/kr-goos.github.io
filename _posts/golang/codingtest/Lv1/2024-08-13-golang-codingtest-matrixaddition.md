@@ -53,6 +53,7 @@ func solution(arr1 [][]int, arr2 [][]int) [][]int {
 
 ## 테스트코드
 ### 유닛 테스트
+{% raw %}
 ```golang
 const TESTCOUNT = 2
 
@@ -80,6 +81,7 @@ func TestSolution(t *testing.T) {
 	}
 }
 ```
+{% endraw %}
 
 ```bash
 $ go test -v
