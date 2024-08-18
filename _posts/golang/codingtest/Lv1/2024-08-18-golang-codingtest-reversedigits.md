@@ -36,8 +36,8 @@ func solution(n int64) []int {
 	return answer
 }
 ```
-- n 의 값을 10 으로 나눈 나머지를 배열에 저장
-- n 을 10으로 나눈 몫을 n 에 저장
+- `n` 의 값을 10 으로 나눈 나머지를 배열에 저장
+- `n` 을 10으로 나눈 몫을 `n` 에 저장
 - `n > 0` 조건을 충족하는 동안 순회
 - `answer` 반환
 
@@ -55,7 +55,6 @@ func TestSolution(t *testing.T) {
 		}
 	}
 }
-
 ```
 
 ```bash
