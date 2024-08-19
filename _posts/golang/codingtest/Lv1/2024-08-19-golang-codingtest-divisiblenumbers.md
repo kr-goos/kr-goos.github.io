@@ -101,6 +101,7 @@ func TestSolution(t *testing.T) {
 		fmt.Println("result : ", result[i])
 		fmt.Println("solution result : ", solution(arr[i], divisor[i]))
 	}
+}
 ```
 
 ```bash
