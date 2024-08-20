@@ -47,7 +47,7 @@ image:
 
 - 예제 1번은 2, 3, 6번 영역에 페인트를 다시 칠해야 합니다. 롤러의 길이가 4미터이므로 한 번의 페인트칠에 연속된 4개의 구역을 칠할 수 있습니다. 처음에 3, 4, 5, 6번 영역에 페인트칠을 하면 칠해야 할 곳으로 2번 구역만 남고 1, 2, 3, 4번 구역에 페인트칠을 하면 2번 만에 다시 칠해야 할 곳에 모두 페인트칠을 할 수 있습니다.
 
-![image](../../../../assets/img/posts/golang/codingtest/golang-codingtest-overpainting/image1.png)
+![image](../../../../../assets/img/posts/golang/codingtest/golang-codingtest-overpainting/image1.png)
 
 2번보다 적은 횟수로 2, 3, 6번 영역에 페인트를 덧칠하는 방법은 없습니다. 따라서 최소 횟수인 2를 return 합니다.
 
@@ -56,7 +56,7 @@ image:
 
 - 예제 2번은 1, 3번 영역에 페인트를 다시 칠해야 합니다. 롤러의 길이가 4미터이므로 한 번의 페인트칠에 연속된 4개의 구역을 칠할 수 있고 1, 2, 3, 4번 영역에 페인트칠을 하면 한 번에 1, 3번 영역을 모두 칠할 수 있습니다.
 
-![image](../../../../assets/img/posts/golang/codingtest/golang-codingtest-overpainting/image2.png)
+![image](../../../../../assets/img/posts/golang/codingtest/golang-codingtest-overpainting/image2.png)
 
 따라서 최소 횟수인 1을 return 합니다.
 
@@ -65,7 +65,7 @@ image:
 
 - 예제 3번은 모든 구역에 페인트칠을 해야 합니다. 롤러의 길이가 1미터이므로 한 번에 한 구역밖에 칠할 수 없습니다. 구역이 4개이므로 각 구역을 한 번씩만 칠하는 4번이 최소 횟수가 됩니다.
 
-![image](../../../../assets/img/posts/golang/codingtest/golang-codingtest-overpainting/image3.png)
+![image](../../../../../assets/img/posts/golang/codingtest/golang-codingtest-overpainting/image3.png)
 
 따라서 4를 return 합니다.
 
