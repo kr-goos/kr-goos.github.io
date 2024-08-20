@@ -170,4 +170,4 @@ PASS
 ok      golang-coding-test/Lv1/gym_clothes      0.273s
 ```
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/gym_clothes)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/gym_clothes)

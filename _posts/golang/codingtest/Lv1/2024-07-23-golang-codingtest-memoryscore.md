@@ -274,4 +274,4 @@ ok      golang-coding-test/Lv1/memory_score     0.225s
 ```
 - 벤치마크 테스트에서 사용하는 데이터의 크기와 복잡성에 따라 두 함수의 성능 차이가 다를 수 있습니다. 특히 map을 사용하는 solution2 함수는 많은 양의 데이터를 처리할 때 성능 이점을 가지지만, 작은 데이터 세트에서는 오히려 오버헤드가 클 수 있습니다.
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/memory_score)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/memory_score)

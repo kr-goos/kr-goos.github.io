@@ -165,4 +165,4 @@ ok      golang-coding-test/Lv1/remove_smallest_number   3.064s
 - 배열의 요소의 개수가 많은 테스트케이스에는 다른 성능을 보일 수 있지만, 현재 테스트케이스에서는 `solution` 함수가 월등히 빠른 것을 확인할 수 있습니다.
 
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/remove_smallest_number)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/remove_smallest_number)

@@ -245,4 +245,4 @@ PASS
 ok      golang-coding-test/Lv1/most_received_gifts      0.206s
 ```
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/most_received_gifts)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/most_received_gifts)

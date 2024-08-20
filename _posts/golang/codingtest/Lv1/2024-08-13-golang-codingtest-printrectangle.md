@@ -61,4 +61,4 @@ go run solution.go
 *****
 ```
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/print_rectangle)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/print_rectangle)

@@ -84,4 +84,4 @@ PASS
 ok      golang-coding-test/Lv1/find_remainder_one       0.238s
 ```
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/find_remainder_one)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/find_remainder_one)

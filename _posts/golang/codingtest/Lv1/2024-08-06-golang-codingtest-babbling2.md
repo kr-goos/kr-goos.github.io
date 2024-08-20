@@ -201,4 +201,4 @@ exit status 1
 FAIL    golang-coding-test/Lv1/babbling_2       0.185s
 ```
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/babbling_2)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/babbling_2)

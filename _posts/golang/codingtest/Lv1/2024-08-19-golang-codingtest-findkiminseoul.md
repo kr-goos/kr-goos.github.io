@@ -72,4 +72,4 @@ ok      golang-coding-test/lv1/find_kim_in_seoul        0.291s
 ```
 
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/find_kim_in_seoul)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/find_kim_in_seoul)

@@ -183,4 +183,4 @@ ok      golang-coding-test/Lv1/harshad_number   2.717s
 
 - 자료형을 계속 변환해주는 1번 방법보다, 2번 방법이 훨씬 빠른 것을 확인할 수 있습니다.
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/harshad_number)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/harshad_number)

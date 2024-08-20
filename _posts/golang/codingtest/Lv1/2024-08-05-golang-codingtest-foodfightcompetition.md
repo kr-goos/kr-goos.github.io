@@ -215,4 +215,4 @@ PASS
 ok      golang-coding-test/Lv1/food_fight_competition   3.635s
 ```
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/food_fight_competition)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/food_fight_competition)

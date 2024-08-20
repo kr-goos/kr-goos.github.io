@@ -129,4 +129,4 @@ PASS
 ok      golang-coding-test/Lv1/over_painting    0.306s
 ```
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/over_painting)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/over_painting)

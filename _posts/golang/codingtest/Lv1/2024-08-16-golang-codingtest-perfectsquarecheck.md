@@ -121,4 +121,4 @@ ok      golang-coding-test/Lv1/perfect_square_check  0.475s
 ```
 
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/perfect_square_check)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/perfect_square_check)

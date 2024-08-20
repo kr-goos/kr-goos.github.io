@@ -90,4 +90,4 @@ ok      golang-coding-test/lv1/basic_string_handling    0.230s
 ```
 
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/basic_string_handling)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/basic_string_handling)

@@ -34,4 +34,4 @@ func solution(s string) int {
 ```
 
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/Lv1/string_to_integer)
+## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/string_to_integer)
