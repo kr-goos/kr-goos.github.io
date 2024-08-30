@@ -6,7 +6,7 @@ date: 2024-08-30 12:45:00 +0900
 categories: [Nginx, SSL]
 tags: [Nginx, Ubuntu, SSL]
 image:
-  path: /assets/img/posts/nginx/nginx.png
+  path: /assets/img/posts/nginx/nginx.svg
 ---
 
 ## 1. OpenSSL을 사용한 자체 서명된 인증서 생성
@@ -78,11 +78,12 @@ server {
 - ```bash
     sudo nginx -t
   ```
-- 결과 확인
+- 성공 확인
     - ```bash
         nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
         nginx: configuration file /etc/nginx/nginx.conf test is successful
        ```
+- 실패 시 문법 확인
 
 ### 3.2 Nginx 재시작
 - ```bash
