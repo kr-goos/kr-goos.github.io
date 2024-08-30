@@ -73,16 +73,18 @@ server {
 
 
 ## 3. Nginx 설정 테스트 및 재시작
-- 설정 파일에 오류가 없는지 테스트 (설정 파일의 문법을 확인)
+
+### 3.1 설정 파일에 오류가 없는지 테스트 (설정 파일의 문법을 확인)
+- ```bash
+    sudo nginx -t
+    ```
+- 결과 확인
     - ```bash
-      sudo nginx -t
-      ```
-    - 결과 확인
-        - ```bash
-          nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
-          nginx: configuration file /etc/nginx/nginx.conf test is successful
-          ```
-- Nginx 재시작
+        nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+        nginx: configuration file /etc/nginx/nginx.conf test is successful
+        ```
+
+### 3.2 Nginx 재시작
     - ```bash
       sudo systemctl restart nginx
       ```
@@ -116,5 +118,5 @@ server {
                           ```
 
 
-## 브라우저 경고 무시
+## 4. 브라우저 경고 무시
 - 자체 서명된 인증서는 신뢰할 수 있는 CA(Certificate Authority)에서 서명되지 않았기 때문에 브라우저에서 "안전하지 않음" 경고가 나타납니다. 이 경고를 무시하고 진행할 수 있지만, **테스트 환경에서만 사용**하는 것이 좋습니다.
