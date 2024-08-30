@@ -77,45 +77,45 @@ server {
 ### 3.1 설정 파일에 오류가 없는지 테스트 (설정 파일의 문법을 확인)
 - ```bash
     sudo nginx -t
-    ```
+  ```
 - 결과 확인
     - ```bash
         nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
         nginx: configuration file /etc/nginx/nginx.conf test is successful
-        ```
+       ```
 
 ### 3.2 Nginx 재시작
+- ```bash
+    sudo systemctl restart nginx
+  ```
+- 아래와 같은 에러가 발생할 경우
     - ```bash
-      sudo systemctl restart nginx
+        Job for nginx.service failed because the control process exited with error code.
+        See "systemctl status nginx.service" and "journalctl -xeu nginx.service" for details.
       ```
-    - 아래와 같은 에러가 발생할 경우
+    - 로그 확인 (`vi /var/log/nginx/error.log`)
         - ```bash
-          Job for nginx.service failed because the control process exited with error code.
-          See "systemctl status nginx.service" and "journalctl -xeu nginx.service" for details.
+            cannot load certificate key "/home/server.key": PEM_read_bio_PrivateKey() failed (SSL:  error:1400006B:UI routines::processing error:while reading strings error:0480006D:PEM routines::problems getting password error:07880109:common libcrypto routines::interrupted or cancelled error:07880109:common libcrypto routines::interrupted or cancelled error:1C80009F:Provider routines::unable to get passphrase error:1400006B:UI routines::processing error:while reading strings error:0480006D:PEM routines::problems getting password error:07880109:common libcrypto routines::interrupted or cancelled error:04800068:PEM routines::bad password read)
           ```
-        - 로그 확인 (`vi /var/log/nginx/error.log`)
-            - ```bash
-              cannot load certificate key "/home/server.key": PEM_read_bio_PrivateKey() failed (SSL:  error:1400006B:UI routines::processing error:while reading strings error:0480006D:PEM routines::problems getting password error:07880109:common libcrypto routines::interrupted or cancelled error:07880109:common libcrypto routines::interrupted or cancelled error:1C80009F:Provider routines::unable to get passphrase error:1400006B:UI routines::processing error:while reading strings error:0480006D:PEM routines::problems getting password error:07880109:common libcrypto routines::interrupted or cancelled error:04800068:PEM routines::bad password read)
-              ```
-            - 위와 같은 에러가 확인되는 경우, 해당 오류 메시지는 Nginx가 SSL 인증서의 개인 키를 읽으려 할 때 발생한 문제
-                - 원인 : 비밀번호를 올바르게 입력하지 못했거나, 비밀번호 입력이 중단된 경우에도 발생할 수 있음
-                - **해결방법**
-                    1. 비 암호화 된 키 파일로 변환 (server.key -> decrypted_server.key)
-                        - ```bash
-                          openssl rsa -in /home/server.key -out /home/decrypted_server.key
-                          ```
-                    2. nginx 설정 파일 업데이트
-                        - ```nginx
-                          ssl_certificate_key /{파일저장경로}/decrypted_server.key;
-                          ```
-                    3. nginx 설정 테스트 
-                        - ```bash
-                          sudo nginx -t
-                          ```
-                    4. nginx 서비스 재시작
-                        - ```bash
-                          sudo systemctl restart nginx
-                          ```
+        - 위와 같은 에러가 확인되는 경우, 해당 오류 메시지는 Nginx가 SSL 인증서의 개인 키를 읽으려 할 때 발생한 문제
+            - 원인 : 비밀번호를 올바르게 입력하지 못했거나, 비밀번호 입력이 중단된 경우에도 발생할 수 있음
+            - **해결방법**
+                1. 비 암호화 된 키 파일로 변환 (server.key -> decrypted_server.key)
+                    - ```bash
+                        openssl rsa -in /home/server.key -out /home/decrypted_server.key
+                      ```
+                2. nginx 설정 파일 업데이트
+                    - ```nginx
+                        ssl_certificate_key /{파일저장경로}/decrypted_server.key;
+                      ```
+                3. nginx 설정 테스트 
+                    - ```bash
+                        sudo nginx -t
+                      ```
+                4. nginx 서비스 재시작
+                    - ```bash
+                        sudo systemctl restart nginx
+                      ```
 
 
 ## 4. 브라우저 경고 무시
