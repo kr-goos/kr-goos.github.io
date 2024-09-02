@@ -6,7 +6,7 @@ date: 2024-07-19 08:45:00 +0900
 categories: [Golang, Cache]
 tags: [Golang, Go, Go언어, Cache, interface]
 image:
-  path: /assets/img/posts/golang/golang.svg
+  path: /assets/img/posts/golang/golang.jpg
 ---
 
 ## Dummy cache 란?

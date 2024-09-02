@@ -6,7 +6,7 @@ date: 2024-07-17 11:18:00 +0900
 categories: [Golang, Cache]
 tags: [Golang, Go, Go언어, Cache]
 image:
-  path: /assets/img/posts/golang/golang.svg
+  path: /assets/img/posts/golang/golang.jpg
 ---
 
 ## 캐시란?

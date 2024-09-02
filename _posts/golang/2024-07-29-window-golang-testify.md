@@ -6,7 +6,7 @@ date: 2024-07-29 21:08:00 +0900
 categories: [Golang, UnitTest]
 tags: [Go, Golang, UnitTest]
 image:
-  path: /assets/img/posts/golang/golang.svg
+  path: /assets/img/posts/golang/golang.jpg
 ---
 
 ## 유닛 테스트(Unit Test)란?

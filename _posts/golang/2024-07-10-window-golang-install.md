@@ -6,7 +6,7 @@ date: 2024-07-10 09:00:00 +0900
 categories: [Golang, Install]
 tags: [Window, Go, Golang]
 image:
-  path: /assets/img/posts/golang/golang.svg
+  path: /assets/img/posts/golang/golang.jpg
 ---
 
 ## 1. Go 다운로드

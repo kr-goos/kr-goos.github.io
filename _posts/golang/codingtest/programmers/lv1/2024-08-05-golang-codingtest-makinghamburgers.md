@@ -6,7 +6,7 @@ date: 2024-08-05 12:30:05 +0900
 categories: [Golang, CodingTest]
 tags: [Golang, Go, Go언어, 코딩테스트, UnitTest, BenchmarkTest, Testcode]
 image:
-  path: /assets/img/posts/golang/golang.svg
+  path: /assets/img/posts/golang/golang.jpg
 ---
 
 ## 문제 설명
