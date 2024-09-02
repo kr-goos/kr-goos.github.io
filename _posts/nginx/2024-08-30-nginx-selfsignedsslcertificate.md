@@ -6,7 +6,7 @@ date: 2024-08-30 12:45:00 +0900
 categories: [Nginx, SSL]
 tags: [Nginx, Ubuntu, SSL]
 image:
-  path: /assets/img/posts/nginx/nginx.svg
+  path: /assets/img/posts/nginx/nginx.jpg
 ---
 
 ## 1. OpenSSL을 사용한 자체 서명된 인증서 생성
