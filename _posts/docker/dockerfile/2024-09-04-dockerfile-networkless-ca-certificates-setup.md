@@ -2,7 +2,7 @@
 title: "[Docker] Ubuntu CA 인증서를 수동으로 구성하는 방법"
 description: 네트워크가 되지 않는 환경에서 인증서를 수동으로 등록하는 방법을 알아보겠습니다.
 author: 김우석
-date: 2024-09-24 12:50:00 +0900
+date: 2024-09-04 12:50:00 +0900
 categories: [Docker, Ubuntu]
 tags: [Linux, Ubuntu, Docker, SSL]
 image:
