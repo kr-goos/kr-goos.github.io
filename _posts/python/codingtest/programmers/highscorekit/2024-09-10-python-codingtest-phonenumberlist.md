@@ -6,7 +6,7 @@ date: 2024-09-10 08:40:00 +0900
 categories: [Python, CodingTest]
 tags: [Python, 코딩테스트]
 image:
-  path: /assets/img/posts/python/python.png
+  path: /assets/img/posts/python/python.svg
 ---
 
 ## 문제 설명
