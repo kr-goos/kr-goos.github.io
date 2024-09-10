@@ -106,4 +106,4 @@ PASS
 ok      golang-coding-test/Lv1/password_for_two 0.203s
 ```
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/password_for_two)
+## [Github 바로가기](https://github.com/kr-goos/coding-test-solutions/tree/master/programmers/Lv1/password_for_two)

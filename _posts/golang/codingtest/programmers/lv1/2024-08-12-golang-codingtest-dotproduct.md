@@ -101,4 +101,4 @@ PASS
 ok      golang-coding-test/Lv1/dot_product      0.234s
 ```
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/dot_product)
+## [Github 바로가기](https://github.com/kr-goos/coding-test-solutions/tree/master/programmers/Lv1/dot_product)

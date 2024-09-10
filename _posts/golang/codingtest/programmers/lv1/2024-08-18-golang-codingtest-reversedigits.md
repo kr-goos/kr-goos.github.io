@@ -66,4 +66,4 @@ ok      golang-coding-test/Lv1/reverse_digits   0.141s
 ```
 
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/reverse_digits)
+## [Github 바로가기](https://github.com/kr-goos/coding-test-solutions/tree/master/programmers/Lv1/reverse_digits)

@@ -241,4 +241,4 @@ ok      golang-coding-test/Lv1/knight_weapon    2.700s
 ```
 - 개선 전/후 함수의 벤치마크 테스트 결과 약 3배 이상의 성능 향상을 확인할 수 있습니다. (수치가 중요한 것이 아닌, 문제 파악 및 해결 방법이 중요합니다.)
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/knight_weapon)
+## [Github 바로가기](https://github.com/kr-goos/coding-test-solutions/tree/master/programmers/Lv1/knight_weapon)

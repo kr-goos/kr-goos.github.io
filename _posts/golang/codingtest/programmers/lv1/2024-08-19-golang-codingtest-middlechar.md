@@ -90,4 +90,4 @@ ok      golang-coding-test/lv1/middle_char      0.139s
 ```
 
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/middle_char)
+## [Github 바로가기](https://github.com/kr-goos/coding-test-solutions/tree/master/programmers/Lv1/middle_char)

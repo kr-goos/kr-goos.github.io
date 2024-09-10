@@ -116,4 +116,4 @@ PASS
 ok      golang-coding-test/Lv1/hall_of_fame_1   0.145s
 ```
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/hall_of_fame_1)
+## [Github 바로가기](https://github.com/kr-goos/coding-test-solutions/tree/master/programmers/Lv1/hall_of_fame_1)

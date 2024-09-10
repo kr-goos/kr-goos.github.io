@@ -253,4 +253,4 @@ func BenchmarkSolution3(b *testing.B) {
 	- 타이머 리셋: b.ResetTimer()를 호출하면, 이후의 코드 실행 시간이 벤치마크 측정에 포함됩니다. 이전의 코드 실행 시간(준비 작업 등)은 측정에 포함되지 않습니다.
 	- 측정 시점: b.ResetTimer()를 호출한 시점부터 벤치마크 루프의 각 반복에서 b.N만큼의 반복에 대해 정확한 시간을 측정합니다.
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/running_race)
+## [Github 바로가기](https://github.com/kr-goos/coding-test-solutions/tree/master/programmers/Lv1/running_race)

@@ -99,4 +99,4 @@ PASS
 ok      golang-coding-test/Lv1/matrix_addition  0.800s
 ```
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/matrix_addition)
+## [Github 바로가기](https://github.com/kr-goos/coding-test-solutions/tree/master/programmers/Lv1/matrix_addition)

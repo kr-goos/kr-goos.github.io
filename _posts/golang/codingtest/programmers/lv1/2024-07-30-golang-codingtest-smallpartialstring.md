@@ -129,4 +129,4 @@ PASS
 ok      golang-coding-test/Lv1/small_partial_string     0.167s
 ```
 
-## [Github 바로가기](https://github.com/kr-goos/golang-coding-test/tree/master/programmers/Lv1/small_partial_string)
+## [Github 바로가기](https://github.com/kr-goos/coding-test-solutions/tree/master/programmers/Lv1/small_partial_string)
