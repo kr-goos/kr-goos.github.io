@@ -66,6 +66,7 @@ def solution(participant, completion):
     - 참가자의 `items()`를 순회 (시간 복잡도 : O(n))
         - `pd`와 `pc`의 각 키(이름)와 그에 대응하는 값(등장 횟수)을 비교
             - 만약 참가자의 카운트(`v`)가 완주자의 카운트(`pc[k]`) 보다 크다면 참가자(`k`)가 완주하지 못한 것
+
 - 전체 시간복잡도 O(n)
 
 ### 실행결과
@@ -111,6 +112,7 @@ def solution(participant, completion):
             - total = (hash(a) + hash(b) + hash(c) + hash(a)) - hash(a) - hash(b) - hash(c)
             - total = hash(a)
             - total 에는 a 의 해시값만이 남아 a 가 완주하지 못한 선수가 됨
+
 - **해시 함수를 이용하여 O(1)** 시간 복잡도로 검색이 가능
 - 전체적으로 O(n) 시간 안에 문제를 해결
 - 이 방식은 해시 테이블과 해시값을 이용하여 동명이인이 있을 경우에 중복 처리 문제를 해결
