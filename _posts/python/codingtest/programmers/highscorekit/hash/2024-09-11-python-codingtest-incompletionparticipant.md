@@ -126,4 +126,4 @@ def solution(participant, completion):
 
 
 
-## [Github 바로가기](https://github.com/kr-goos/coding-test-solutions/blob/master/programmers/HighScoreKit/hash/pokemon/solution.py)
+## [Github 바로가기](https://github.com/kr-goos/coding-test-solutions/blob/master/programmers/HighScoreKit/hash/incompletion_participant/solution.py)
