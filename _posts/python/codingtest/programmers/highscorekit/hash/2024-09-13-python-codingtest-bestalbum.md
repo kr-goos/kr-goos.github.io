@@ -124,6 +124,4 @@ def solution(genres: List[str], plays: List[int]) -> List[int]:
 ```
 
 
-        
-
 ## [Github 바로가기](https://github.com/kr-goos/coding-test-solutions/blob/master/programmers/HighScoreKit/hash/best_album/solution.py)
