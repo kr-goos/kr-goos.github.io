@@ -46,7 +46,7 @@ image:
 
 ## 풀이 
 
-### 평범한 풀이
+### 기본 풀이
 ```python
 def solution(array, commands):
     answer = []
