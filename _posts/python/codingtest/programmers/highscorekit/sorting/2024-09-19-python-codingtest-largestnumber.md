@@ -1,5 +1,5 @@
 ---
-title: "[Python] 프로그래머스 Lv.1 가장 큰 수"
+title: "[Python] 프로그래머스 고득점 Kit 가장 큰 수"
 description: 가장 큰 수 문제에 대해 풀이해 해보겠습니다.
 author: 김우석
 date: 2024-09-19 08:50:03 +0900

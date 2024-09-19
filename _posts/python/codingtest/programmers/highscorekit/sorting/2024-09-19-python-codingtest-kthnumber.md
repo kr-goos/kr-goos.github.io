@@ -1,5 +1,5 @@
 ---
-title: "[Python] 프로그래머스 Lv.1 K번째수"
+title: "[Python] 프로그래머스 고득점 Kit K번째수"
 description: K번째수 문제에 대해 풀이해 해보겠습니다.
 author: 김우석
 date: 2024-09-19 08:20:03 +0900

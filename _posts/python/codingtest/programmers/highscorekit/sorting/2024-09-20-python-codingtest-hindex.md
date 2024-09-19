@@ -1,5 +1,5 @@
 ---
-title: "[Python] 프로그래머스 Lv.1 H-Index"
+title: "[Python] 프로그래머스 고득점 Kit H-Index"
 description: H-Index 문제에 대해 풀이해 해보겠습니다.
 author: 김우석
 date: 2024-09-20 08:40:03 +0900
