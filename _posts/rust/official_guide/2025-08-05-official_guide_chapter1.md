@@ -120,7 +120,7 @@ cargo 1.85.0 (d73d2caf9 2024-12-31) # output
     ```bash
     cargo new hello_cargo
     # output
-        Creating binary (application) `hello_cargo` paackage 
+        Creating binary (application) `hello_cargo` package 
     note: see more `Cargo.toml` keys and their definittions at https://doc.rust-lang.org/cargo/referenc/e/manifest.html
     ```
 
@@ -141,7 +141,7 @@ cargo 1.85.0 (d73d2caf9 2024-12-31) # output
 
 
 ### TOML(Tom's Obvious, Minimal Language, https://toml.io)
-cargo new 로 생성한 Cargo.toml 파일의 내용
+`cargo new` 로 생성한 Cargo.toml 파일의 내용
 ```toml
 [package]
 name = "hello_cargo"
@@ -167,7 +167,7 @@ cargo build
 
 ##### 결과
 - 실행 파일 생성  
-    - 현재 디렉터리가 아닌 target/debug/ (cargo new 를 통해 생성한 프로젝트 루트 기준) 에 실행 파일을 생성함
+    - (cargo new 를 통해 생성한) 프로젝트 루트/target/debug/ 위치에 실행 파일을 생성함
         - 기본 빌드가 디버그 빌드기 때문에, 카고는 debug라는 디렉터리에 바이너리를 생성
 - 빌드의 결과로 생성된 Cargo.lock 파일은 프로젝트에서 사용하는 디펜던시의 정확한 버전을 자동으로 기록해두는 파일 (직접 수정할 필요 X)
     - 현재는 디펜던시를 가지지 않기 때문에 특별한 내용이 없음
@@ -199,7 +199,7 @@ cargo run
     ```bash
     cargo run
     # output
-    Compiling ttt v0.1.0 (C:\projects\rust_learn\ttt)
+    Compiling ttt v0.1.0 (C:\projects\rust_learn\ttt) # 빌드 수행
       Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.55s
         Running `target\debug\ttt.exe`
     Hello, world!
