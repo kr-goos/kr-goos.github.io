@@ -1,9 +1,9 @@
 ---
-title: "[RUST] 러스트 프로그래밍 공시 가이드(제2판) 1장 요약"
-description: 시작해봅시다
+title: "[RUST] 러스트 프로그래밍 공식 가이드(제2판) 1장 요약"
+description: CHAPTER 1 시작해봅시다
 author: 김우석
 date: 2025-08-05 08:00:00 +0900
-categories: [Rust]
+categories: [Rust, OfficialGuide]
 tags: [Rust]
 image:
   path: /assets/img/posts/rust/rust-logo.svg
@@ -167,7 +167,7 @@ cargo build
 
 ##### 결과
 - 실행 파일 생성  
-    - (cargo new 를 통해 생성한) 프로젝트 루트/target/debug/ 위치에 실행 파일을 생성함
+    - (cargo new 를 통해 생성한) 프로젝트 루트/target/debug/ 위치에 실행 파일을 생성
         - 기본 빌드가 디버그 빌드기 때문에, 카고는 debug라는 디렉터리에 바이너리를 생성
 - 빌드의 결과로 생성된 Cargo.lock 파일은 프로젝트에서 사용하는 디펜던시의 정확한 버전을 자동으로 기록해두는 파일 (직접 수정할 필요 X)
     - 현재는 디펜던시를 가지지 않기 때문에 특별한 내용이 없음
