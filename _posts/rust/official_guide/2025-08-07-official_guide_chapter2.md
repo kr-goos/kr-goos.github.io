@@ -123,17 +123,17 @@ io::stdin()
                 - Color::Blue
 - `.expect("Failed to read line")` : Result 의 메서드로, Result 인스턴스가 Err일 경우 expect 메서드는 프로그램 작동을 멈추고 except에 인수로 넘겼던 메시지를 출력함
     - except를 호출하지 않는다면, 컴파일은 되지만 경고가 발생
-    ```
-    warning: unused `Result` that must be used
-    --> src\main.rs:10:5
-    |
-    10 | /     io::stdin()
-    11 | |         .read_line(&mut guess);
-    | |______________________________^
-    |
-    = note: this `Result` may be an `Err` variant, which should be handled
-    = note: `#[warn(unused_must_use)]` on by default
-    ```
+        ```
+        warning: unused `Result` that must be used
+        --> src\main.rs:10:5
+        |
+        10 | /     io::stdin()
+        11 | |         .read_line(&mut guess);
+        | |______________________________^
+        |
+        = note: this `Result` may be an `Err` variant, which should be handled
+        = note: `#[warn(unused_must_use)]` on by default
+        ```
 
 ```rust
 println!("You guessed: {guess}");
@@ -263,3 +263,46 @@ fn main() {
     ```
 
 ## 비밀번호와 추릿값 비교하기
+
+```rust
+use std::io;
+use std::cmp::Ordering;
+use rand::Rng;
+
+fn main() {
+    // --생략--
+
+    println!("You guessed: {guess}");
+
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!");
+        Ordering::Greater => println!("Too big!");
+        Ordering::Equal => println!("You win!");
+    }
+}
+```
+
+- `use std::cmp::Ordering;` : use 구문을 하나 더 사용하여 표준 라이브러리로 부터 타입을 가져옴
+    - `Ordering` : 열거형
+        - 배리언트
+            - `Less`
+            - `Greater`
+            - `Equal`
+- `match guess.cmp(&secret_number)`
+    - `cmp` 메서드 : 두 값을 비교하며 비교 가능한 모든 것들에 대해 호출할 수 있음
+        - 비교하고 싶은 값들의 참조자를 받음
+        - 위 예시에서는 `guess`와 `secret_number`를 비교
+        - `Ordering` 열겨형을 반환
+    - `match` 표현식
+        - match 표현식은 **갈래(arm)**들로 이루어져 있으며, 하나의 갈래는 하나의 **패턴(pattern)**과 match표현식에서 주어진 값이 패턴과 맞다면 실행할 코드로 이루어져 있음
+            - 갈래
+                - `패턴 => 코드` 한 묶음
+                - match 안의 한 줄 또는 블록
+            - 패턴
+                - 값이 맞는지 검사하는 조건
+                - 갈래의 왼쪽 부분
+        - 주어진 값을 갈래의 패턴에 맞는지 **순서대로 확인**
+        - **완전성 검사**를 컴파일 타임에 진행하여 비교 대상이 가질 수 있는 모든 경우를 다 match 에서 처리해야함 (처리하지 않으면 **컴파일 에러** 발생)
+        - cmp가 `guess`와 `secret_number`를 비교한 결과인 `Ordering` 값에 따라 무엇을 할 것인지 결정
+
+    
