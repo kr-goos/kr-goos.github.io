@@ -292,3 +292,119 @@ fn change(some_string: &mut String) {
 
 
 ### 댕글링 참조
+댕글링 포인터(dangling pointer)란, 이미 해제된 메모리를 가리키는 포인터를 말합니다. 포인터는 주소를 들고있는데, 그 주소의 실제 메모리는 더이상 존재하지 않거나 다른 용도로 재사용된 상태입니다.
+
+러스트에서는 어떤 데이터의 참조자를 만들면, **해당 참조자가 스코프를 벗어나기 전에 데이터가 먼저 스코프를 벗어나는지 컴파일러에서 확인하여 댕글링 참조가 생성되지 않도록 보장**합니다.
+
+```rust
+fn main() {
+    let reference_to_nothing = dangle();
+}
+
+fn dangle() -> &String { // dangle은 String의 참조자를 반환합니다.
+    let s = String::from("hello"); // s는 새로운 String 입니다.
+
+    &s // String s의 참조자를 반환합니다.
+} // s는 스코프 밖으로 벗어나고 버려지고 해당 메모리는 해제됩니다.
+```
+
+- `cargo run`
+    - 에러 발생
+        - ```bash
+          this function's return type contains a borrowed value, 
+          but there is no value for it to be borrowed from
+          ```
+        - 해석 : 이 함수는 빌린 값을 반환하고 있으나, 빌린 실젯값이 존재하지 않습니다. 
+    - `s`는 `dangle` 함수 내에서 생성됐기 때문에, 함수가 끝날 떄 할당 해제됩니다.
+    - 하지만 코드에서는 `&s`를 반환하기 때문에 이는 유효하지 않은 STring을 가리키는 참조자를 반환하는 행위이므로 에러가 발생합니다. (따라서, 이럴 경우엔 String 을 직접 반환하도록 합니다.)
+
+### 참조자 규칙
+- 단 하나의 가변 참조자만 갖거나, 여러 개의 불변 참조자를 가질 수 있습니다.
+- 참조자는 항상 유효해야합니다.
+
+
+## 슬라이스 타입
+**슬라이스(slice)** 는 컬렉션(collection)을 통째로 참조하는 것이 아닌, 컬렉션의 연속된 일련의 요소를 참조하도록 해줍니다. 또한 슬라이스는 참조자의 일종으로서 소유권을 갖지 않습니다.
+
+### 문자열 슬라이스
+문자열 슬라이스(string slice)는 String의 일부를 가리키는 참조자를 말합니다.
+
+```rust
+let s = String::from("hello world");
+
+let hello = &s[0..5];
+let world = &s[6..11];
+```
+- `[starting_index..ending_index]` 는 starting_index 부터 시작해 ending_index 직전, 즉 ending_index - 1 위치까지 슬라이스를 생성한다는 의미입니다.
+- 슬라이스는 내부적으로 **시작 위치**, **길이**를 데이터 구조에 저장합니다. (길이: ending_index - starting_index)
+    - ![rust-string](../../../assets/img/posts/rust/official-guide/chapter4/string_slice.png)
+- .. 범위 표현법은 인덱스 0부터 시작하는 경우, 앞의 값을 생략할 수 있습니다.
+    - `let slice = &s[0..2];` 와 `let slice = &s[..2];` 의 표현은 동일합니다.
+- String 맨 마지막 바이트까지 포함하는 슬라이스는 뒤의 값을 생략할 수 있습니다.
+    - len 이 10 이라 가정할 경우 `let slice = &s[3..10]` 와 `let slice = &s[3..]` 의 표현은 동일합니다.
+- 앞 뒤 모두 생략할 경우, 전체 문자열이 슬라이스로 생성됩니다.
+    - ```rust
+      let s = String::from("hello");
+
+      let len = s.len();
+
+      let slice = &s[0..len];   // 표현 동일 
+      let slice = &s[..];       // 표현 동일 
+      ```
+
+#### 슬라이스로서의 문자열 리터럴
+문자열 리터럴은 바이너리 내에 저장된다.
+
+```rust
+let s = "Hello, World!";
+```
+
+- `s`는 바이너리의 특정 지점을 가리키는 슬라이스(`&str` 타입)입니다.
+- `&str` 은 불변 참조자 이므로, 문자열 리터럴은 왜 변경할 수 없는지에 대한 의문도 풀립니다.
+
+
+#### 문자열 슬라이스를 매개변수로 사용하기
+
+```rust
+fn first_word(s: &String) -> &str {
+```
+- 이 함수는 반드시 `&String` 만을 받을 수 있습니다.
+- 즉, `String` 타입으로 **소유된 문자열**을 전달해야만 동작합니다.
+- 문자열 리터럴인 `"hello, world"` 와 같은 값의 타입은 `&str` 타입이기 떄문에 바로 쓸 수 없음
+
+
+**개선 버전**
+```rust
+fn first_word(s: &str) -> &str {
+```
+- 파라미터로 **문자열 슬라이스(&str)를** 받습니다.
+- 이 덕분에 `&String`도 쓸 수 있고, `"hello, world"` 같은 리터럴도 그대로 쓸 수 있습니다.
+
+#### &String → &str (역참조 강제, Deref Coercion)
+
+```rust
+fn print_str(s: &str) {
+    println!("{}", s);
+}
+
+let s = String::from("hello");
+
+// 여기서 &s 는 원래 &String 타입이지만,
+// 함수가 &str을 원하니까 러스트가 자동으로 &str로 바꿔줌
+print_str(&s);
+```
+- 즉, `&String` 은 자동으로 `&str`로 변환될 수 있습니다.
+
+### 그 외 슬라이스
+```rust
+let a = [1, 2, 3, 4, 5];
+
+let slice = &a[1..3]; // 인덱스 1 부터 3 직전 까지 -> [2, 3]
+
+assert_eq!(slice, &[2, 3]);
+```
+- 이 슬라이스는 &[i32] 타입입니다.
+- 슬라이스의 첫 번째 요소를 참조하는 참조자와 슬라이스의 길이를 저장하여 작동합니다.
+    - 첫 번째 요소의 주소 → a[1] (2의 위치)
+    - 길이 → 2
+- 위와 같은 슬라이스는 모든 컬렉션에서 사용 가능합니다.
