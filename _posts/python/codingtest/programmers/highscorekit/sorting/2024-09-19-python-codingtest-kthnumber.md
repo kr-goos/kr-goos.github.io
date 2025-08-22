@@ -62,7 +62,7 @@ def solution(array, commands):
     return list(map(lambda cmd:sorted(array[cmd[0]-1:cmd[1]])[cmd[2]-1], commands))
 ```
 - map(function, iterable)
-    - 두번째 파라미터로 받은 반복 가능한 자료형을 첫 번쨰 파라미터로 들어온 함수에 하나씩 집어넣어 함수를 수행
+    - 두번째 파라미터로 받은 반복 가능한 자료형을 첫 번째 파라미터로 들어온 함수에 하나씩 집어넣어 함수를 수행
     - 람다 함수에서, `array` 를 슬라이싱하고 정렬한 후 요소를 추출하는 과정에서 commands 의 요소(`cmd`) 를 이용
 
 ### comprehension 을 이용한 방법
