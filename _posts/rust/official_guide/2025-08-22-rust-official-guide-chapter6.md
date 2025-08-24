@@ -271,4 +271,172 @@ fn value_in_cents(coin: Coin) -> u8 {
 }
 ```
     
+- 매치 표현식 내에서 배리언트 `Coin::Quarter` 의 값과 매칭되는 패턴에 `state` 라는 이름의 변수를 추가
+    - `Coin::Quarter` 이 매치될 때, `state` 변수는 그 쿼터 동전의 주(`UsState`)에 대한 값에 바인딩
+- `value_in_cents(Coin::Quarter(UsState::Alaska))` 와 같이 호출하면, `coin`은 `Coin::Quarter(UsState::Alaska)` 값을 갖게 됨
+    - `Quarter` 갈래에서 `state` 에 바인딩 된 값은 `UsState::Alaska` 가 됨
+
+### Option<T>를 이용하는 매칭
+
+```rust
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        None => None,
+        Some(i) => Some(i + 1),
+    }
+}
+
+let five = Some(5);
+let six = plus_one(five);
+let none = plus_one(None);
+```
+
+- `Option<i32>` 타입을 인수로 받는 `plus_one` 함수를 정의
+    - `Option<i32>` 타입은 값이 있을지 없을지 확인이 필요하며, 컴파일러는 값을 사용하기 전에 이런 경우가 처리되었는지 확인함
+        - 즉 `Option<i32>` 을 `i32` 로 변환해야 함
+- `plus_one` 함수는 값이 있으면 1을 더한 `Some` 배리언트를 반환(`Some(6)`)하고, 값이 없으면 `None` 을 반환
+
+### match는 철저합니다
+`match`에서 갈래의 패턴들은 모든 가능한 경우를 다루어야 함
+
+- 러스트의 매치는 **철저합니다(exhaustive)**
+
+```rust
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        Some(i) => Some(i + 1),
+    }
+}
+```
+
+- `None` 케이스를 다루지 않았기 때문에 위 코드는 버그를 일으킴
+
+```bash
+    |
+7   |     match x {
+    |           ^ pattern `None` not covered
+    |
+...
+    = note: the matched value is of type `Option<i32>`
+help: ensure that all possible cases are being handled by adding a match arm with a wildcard pattern or an explicit pattern as shown
+    |
+8   ~         Some(i) => Some(i + 1),
+9   ~         None => todo!(),
+    |
+```
+
+- 발생할 수 있는 경우 중 놓친게 있음을 아는 것은 물론, 어떤 패턴을 놓쳤는가도 알고 있음
+    - 따라서, 유효한 코드를 만들려면 **모든 가능성**을 샅샅이 다루어야 함
+- 위 예시와 같이 `None` 케이스를 다루는 것을 깜빡하더라도 러스트가 알아채고 알려줌
+    - 널일지도 모르는 값을 가지고 있어서 발생할 수 있는 실수를 불가능하게 만듦
+
+### 포괄 패턴과 _ 자리표시자
+
+#### 포괄 패턴(Catch-all Pattern)
+`match` 표현식에서 아직 처리되지 않은 모든 나머지 경우를 포괄적으로 처리하는 패턴
+
+- 특정 값이 아닌, 나머지 전부를 매칭하는 역할을 함
+- 포괄 패턴은 `_` 를 사용할 수도 있고, 변수명을 지정해서 사용할 수도 있음
+
+```rust
+let dice_roll = 9;
+match dice_roll {
+    3 => add_fancy_hat(),
+    7 => remove_fancy_hat(),
+    other => move_player(other),
+}
+
+fn add_fancy_hat() {}
+fn remove_fancy_hat() {}
+fn move_player(num_spaces: u8) {}
+```
+
+- 처음 두 갈래에서의 패턴은 3과 7 리터럴 값을 가지며, 나머지 모든 가능한 값을 다루는 마지막 갈래에 대한 패턴은 `other` 라는 이름을 가진 변수
+    - 위 코드는 컴파일이 가능
+        - 나열되지 않은 나머지 모든 값에 대해 마지막 패턴이 매칭되기 때문
+- 패턴은 순차적으로 평가되므로 마지막에 포괄적인 갈래를 위치 시켜야 함
+    - 포괄 패턴 뒤에 있는 갈래는 결코 실행될 수 없음
+        - 따라서, 러스트는 경고를 줌
+
+
+#### _ 자리표시자
+포괄 패턴이 필요한데 그 포괄 패턴의 값을 사용할 필요가 없는 경우에 사용하는 패턴
+
+- 러스트에 해당 값을 사용하지 않겠다는 것을 알려주므로, 사용되지 않는 변수에 대한 경고를 띄우지 않음
+
+```rust
+let dice_roll = 9;
+match dice_roll {
+    3 => add_fancy_hat(),
+    7 => remove_fancy_hat(),
+    _ => reroll(),
+}
+
+fn add_fancy_hat() {}
+fn remove_fancy_hat() {}
+fn reroll() {}
+```
+
+- 철저함에 대한 요구사항을 충족
+- 마지막 갈래에서 나머지 모든 값에 대해 **명시적으로 무시**
+
+```rust
+match dice_roll {
+    3 => add_fancy_hat(),
+    7 => remove_fancy_hat(),
+    _ => (),
+}
+```
+
+- 러스트에게 명시적으로 앞의 갈래에 매칭되지 않은 어떠한 값도 사용하지 않을 것임 알려줌
+- `()` 를 통해 어떠한 코드도 실행하지 않기를 원한다고 명시적으로 알려줌
+
+## if let을 사용한 간결한 제어 흐름
+`if let` 문법은 `if`와 `let`을 조합하여 하나의 패턴만 매칭시키고 나머지 경우는 무시하도록 값을 처리하는 간결한 방법을 제공
+
+- `if let` 장점
+    - 타이핑을 줄일 수 있음
+    - 보일러플레이트 코드를 덜 쓰게 됨
+- `if let` 단점
+    - `match`가 강제했던 철저한 검사를 안하게 됨
+- 즉, `if let`은 한 패턴에 매칭될 때만 코드를 실행하고 다른 경우는 무시하는 `match` 문을 작성할 때 사용하는 **문법 설탕(syntax sugar)**
+    - **간결함을 얻는 것이 철저한 검사를 안하게 되는 것에 대한 적절한 거래인지 잘 판단해서 사용할 것**
+
+```rust
+let config_max = Some(3u8);
+match config_max {
+    Some(max) => println!("The maximum is configured to be {}", max),
+    _ => (),
+}
+```
+
+- 값이 `Some` 이면 패턴 내에 있는 `max`에 `Some` 배리언트의 값을 바인딩하고 출력
+- `None` 값에 대해서는 아무것도 처리하지 않음
+    - `match` 표현식을 만족시키려면 딱 하나의 배리언트 처리 후 `_ => ()` 를 붙여야 하는데, 이는 다소 성가신 **보일러 플레이트 코드**
+
+```rust
+let config_max = Some(3u8);
+if let Some(max) = config_max {
+    println!("The maximum is configured to be {}", max);
+}
+```
+
+- 위 예시의 코드를 제거하기 위해 `if let` 사용
+- `if let` 은 `=`로 구분된 패턴과 표현식을 입력받음
+    - `match` 와 동일한 방식으로 작동
+    - 표현식은 `match`에 주어지는 것
+    - 패턴은 이 `match`의 첫 번째 갈래
+        - 위 예시에서 패턴은 `Some(max)`이고 `max`는 `Some`내에 있는 값에 바인딩 됨
+            - `match` 갈래 안에서 `max`를 사용했던 것과 같은 방식으로 `if let` 본문 블록 내에서 `max` 를 사용할 수 있음
+
+```rust
+let mut count = 0;
+if let Coin::Quarter(state) = coin {
+    println!("State quarter from {:?}!", state);
+} else {
+    count += 1;
+}
+```
+
+- `else`뒤에 나오는 코드 블록은 `match` 표현식에서 `_` 케이스 뒤에 나오는 코드 블록과 동일
 
