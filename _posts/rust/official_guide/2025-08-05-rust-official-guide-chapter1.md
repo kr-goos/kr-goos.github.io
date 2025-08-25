@@ -66,11 +66,11 @@ cd hello_world
     - println! : 러스트의 매크로 호출 코드
         - 매크로는 함수와 항상 같은 규칙을 따르지는 않음
     - ';' : 현재 표현식이 끝났으며 다음 표현식이 시작될 준비가 되었다는 의미
-3. 컴파일 및 실행
+3. 컴파일
     ```bash
     rustc main.rs
     ```
-4. 출력 확인
+4. 실행 후 출력 확인
     ```bash
     ./main.exe
     Hello, world! # output
