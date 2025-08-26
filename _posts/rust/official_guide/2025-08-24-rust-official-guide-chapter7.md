@@ -63,7 +63,115 @@ image:
 
 ## 모듈을 정의하여 스코프 및 공개 여부 제어하기
 - **모듈(module)** : 크레이트의 코드를 읽기 쉽고 재사용하기도 쉽게끔 구조화를 할 수 있게 해줌
+    - `mod` 키워드와 모듈이름을 지정하여 모듈을 정의
+    - 모듈의 본문은 중괄호로 감싸져 있음
+    - 모듈 안에 다른 모듈 및 구조체, 열거형, 상수, 트레이트,함수 등의 아이템 정의를 넣을 수 있음
     - 모듈 내의 코드는 기본적으로 비공개
     - 모듈은 아이템의 **공개 여부(privacy)**를 제어하도록 해줌
         - 비공개 아이템은 외부에서 사용이 허용되지 않음
         - 모듈과 모듈 내 아이템을 선택적으로 공개할 수 있음
+    - 모듈 트리
+        - Rust의 모든 크레이트는 트리 구조로 모듈들이 연결됨
+        - 트리 최상단(root)은 크레이트 루트 파일(`main.rs` 또는 `lib.rs`)
+        - 모듈 트리 구조
+            - 전체 모듈 최상위에 crate 라는 모듈이 암묵적으로 위치
+                - ```bash
+                  crate (암묵적으로 존재)
+                  |- network
+                  |     |- client
+                  |            |-request
+                  |-  utils
+                  ```
+                - `crate::` 는 현재 크레이트의 루트부터 시작하는 절대 경로를 나타냄
+
+
+## 경로를 사용하여 모듈 트리의 아이템 참조하기
+러스트 **모듈 트리에서 아이템을 찾는 방법**은 파일 시스템에서 경로를 사용하는 방법과 동일
+
+- **절대 경로(absolute path)** : 크레이트 루트로부터 시작되는 전체 경로
+    - 외부 크레이트로부터의 코드에 대해서는 해당 크레이트 이름으로 절대 경로가 시작됨
+        - Cargo.toml
+            - ```toml
+              [dependencies]
+              rand = "0.8"
+              ```
+        - 코드
+            - ```rust
+              fn main() {
+                  // 절대 경로: rand crate 루트부터 시작
+                  let mut rng = rand::thread_rng();
+                  let n: u32 = rand::Rng::gen_range(&mut rng, 1..=10);
+                  println!("Random number: {}", n);
+              }
+              ```
+    - 현재 크레이트로부터의 코드에 대해서는 `crate` 리터럴로부터 시작됨
+        - ```rust
+          mod network {
+              pub fn connect() {
+                  println!("Connected!");
+              }
+          }
+
+          fn main() {
+              // 절대 경로: crate 루트부터 탐색
+              crate::network::connect();
+          }
+          ```
+- **상대 경로(relative path)** : 현재 모듈을 시작점으로 하여 `self`, `super` 혹은 현재 모듈 내의 식별자를 사용
+    - 현재 모듈 기준
+        - ```rust
+          mod network {
+              pub fn connect() {
+                  println!("Connected!");
+              }
+
+              pub fn start() {
+                  // self:: 는 현재 모듈을 의미
+                  self::connect();
+              }
+          }
+          ```
+    - 상위 모듈 기준
+        - ```rust
+          mod network {
+              pub fn connect() {
+                  println!("Connected!");
+              }
+
+              pub mod client {
+                  pub fn request() {
+                      // super:: 는 network 모듈을 의미
+                      super::connect();
+                  }
+              }
+          }
+          ```
+- 모든 아이템은 기본적으로 `private`
+    - 함수, 메서드, 구조체, 열거형, 모듈, 상수 등은 `pub` 을 붙이지 않으면 부모 모듈 기준으로만 접근 가능
+    - 부모 모듈 밖에서는 접근할 수 없음
+    - 부모 모듈 안에 있는 아이템은 자식 모듈 내 비공개 아이템을 사용할 수 없음
+    - 자식 모듈 내 아이템은 조상 모듈 내 아이템을 사용할 수 있음
+    - 자식 모듈의 세부 구현은 감싸져서 숨겨져 있지만, 자식 모듈 내에서는 자신이 정의된 콘텍스트를 볼 수 있음
+    - ```text
+      crate (루트)
+      |- parent (-> 모듈)
+            |- parent_item (-> 함수)
+            |- child (-> 모듈)
+                 |- child_item (-> 함수)
+                 |- grandchild (-> 모듈)
+                        |- grandchild_item (-> 함수)
+      ```
+        - `parent_item`
+            - child 에서 접근 가능
+            - grandchild 에서 접근 가능
+            - parent 외부(루트 등)에서 접근하려면 `pub` 필요
+        - `child_item`
+            - grandchild 에서 접근 가능
+            - parent에서 접근 불가
+            - child 모듈 내부에서는 접근 가능
+        - `grandchild_item`
+            - grandchild 모듈 내부에서만 접근 가능
+            - child 모듈에서 접근 불가
+            - parent 모듈에서 접근 불가
+
+### pub 키워드로 경로 노출하기
