@@ -46,3 +46,67 @@ let v: Vec<i32> = Vec::new()
 
 
 ### 벡터 업데이트하기
+```rust
+let mut v = Vec::new();
+v.push(5);
+v.push(6);
+```
+
+- `push` 메서드를 사용하여 벡터에 요소를 추가
+- 벡터의 값을 변경하려면 가변 변수로 만들어야 함
+- `Vec<i32>` 타입을 명시하지 않아도 되는 이유
+    - 집어 넣은 숫자가 모두 `i32` 타입인 점을 통해 러스트가 `v` 의 타입을 추론
+
+
+### 벡터 요소 읽기
+```rust
+let v = vec![1,2,3,4,5];
+
+let third: &i32 = &v[2];
+println!("The third element is {third}");
+
+let third: Option<&i32> = v.get(2);
+match third {
+    Some(third) => println!("The third element is {third}"),
+    None => println!("There is no third element."),
+}
+```
+
+- 벡터에 저장된 값을 참조하는 방법
+    - 인덱싱 (`v[i]`)
+        - 벡터에서 `i` 번째 요소를 **직접 반환**
+        - 인덱스 범위를 벗어나면 **panic 발생** 
+            - ```bash
+              thread 'main' panicked at main.rs:4:28:
+              index out of bounds: the len is 5 but the index is 100
+              note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+              ```
+    - `get` 메서드 (`v.get(i)`)
+        - 벡터에서 `i` 번째 요소를 **`Option<&T>`로 반환**
+        - 인덱스 범위를 벗어나면 `None`
+- 벡터 요소를 참조하는 방법을 두 가지 제공하는 이유
+    - 벡터에 없는 인덱스값을 사용하고자 했을 때 프로그램이 어떻게 작동할 것인지 선택할 수 있도록 하기 위함
+- 유효한 참조자를 얻을 때, 빌림검사기가 소유권 및 빌림 규칙을 집행
+    - 빌림검사기 
+        - 컴파일 시점에 소유권(ownership)과 빌림(borrowing) 규칙을 검사하는 컴파일러 내부 기능
+        - 즉, 누가 어떤 값을 읽고 쓰는지, 언제 값이 해제되는지를 체크해서 런타임 오류 없이 안전하게 참조할 수 있는지를 보장
+    - ```rust
+      let mut v = vec![1, 2, 3, 4, 5];
+
+      let first = &v[0]; // 불변 참조
+
+      v.push(6); // 재할당 발생 가능
+      ```
+        - 댕글링 참조 발생으로 컴파일 에러가 발생
+            - `error[E0502]: cannot borrow 'v' as mutable because it is also borrowed as immutable`
+                - 즉, **빌림검사기가 "first 참조자가 아직 살아있는데 push 같은 변경을 하면 위험하다"**라고 판단해서 차단
+            - 벡터는 연속된 메모리 블록을 사용
+            - 새로운 요소를 `push` 할 때 남은 공간이 부족한 경우 (len == cap)
+                - 더 큰 메모리 블록을 새로 할당
+                - 기존 요소들을 새 메모리로 복사
+                - 예전 메모리는 해제
+                - 새 메모리에 새 요소 추가
+            - 기존 요소에 대한 참조자 `first`는 이미 해제 된 옛 메모리를 가리키게 됨
+            - 만약 `len < cap` 인 경우 (재할당이 일어나지 않는 경우) 에러가 발생하지 않을까?
+                - 빌림 검사기는 "재할당이 실제로 일어나는지"는 알지 못함
+                - 즉, Vec의 내부 capacity 상태를 보지 않고, 단순히 **"push가 메모리를 이동시킬 수 있는 가능성이 있다"**는 이유로 불변 참조(`&v[0]`)와 가변 빌림(`v.push`)을 동시에 허용하지 않음을 규칙으로 강제
