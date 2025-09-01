@@ -1,6 +1,6 @@
 ---
 title: "[RUST] 러스트 프로그래밍 공식 가이드(제2판) 4장 요약"
-description: CHAPTER 4 소유권 이해하기
+description: 소유권 이해하기
 author: 김우석
 date: 2025-08-18 08:00:00 +0900
 categories: [Rust, OfficialGuide]

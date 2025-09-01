@@ -1,6 +1,6 @@
 ---
 title: "[RUST] 러스트 프로그래밍 공식 가이드(제2판) 2장 요약"
-description: CHAPTER 2 추리 게임
+description: 추리 게임
 author: 김우석
 date: 2025-08-07 08:00:00 +0900
 categories: [Rust, OfficialGuide]

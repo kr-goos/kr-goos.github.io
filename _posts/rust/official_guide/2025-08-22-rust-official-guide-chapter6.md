@@ -1,6 +1,6 @@
 ---
 title: "[RUST] 러스트 프로그래밍 공식 가이드(제2판) 6장 요약"
-description: CHAPTER 6 열거형과 패턴 매칭
+description: 열거형과 패턴 매칭
 author: 김우석
 date: 2025-08-22 20:30:00 +0900
 categories: [Rust, OfficialGuide]

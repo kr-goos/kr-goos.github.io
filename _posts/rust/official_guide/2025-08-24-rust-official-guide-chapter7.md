@@ -1,6 +1,6 @@
 ---
 title: "[RUST] 러스트 프로그래밍 공식 가이드(제2판) 7장 요약"
-description: CHAPTER 7 커져가는 프로젝트를 패키지, 크레이트, 모듈로 관리하기
+description: 커져가는 프로젝트를 패키지, 크레이트, 모듈로 관리하기
 author: 김우석
 date: 2025-08-24 19:00:00 +0900
 categories: [Rust, OfficialGuide]

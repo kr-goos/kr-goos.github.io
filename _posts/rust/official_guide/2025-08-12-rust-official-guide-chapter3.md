@@ -1,6 +1,6 @@
 ---
 title: "[RUST] 러스트 프로그래밍 공식 가이드(제2판) 3장 요약"
-description: CHAPTER 3 일반적인 프로그래밍 개념
+description: 일반적인 프로그래밍 개념
 author: 김우석
 date: 2025-08-12 08:00:00 +0900
 categories: [Rust, OfficialGuide]
