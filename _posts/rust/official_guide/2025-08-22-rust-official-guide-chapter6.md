@@ -9,7 +9,7 @@ image:
   path: /assets/img/posts/rust/rust-logo.svg
 ---
 
-**열거형(enumerateion, 줄여서 enum)** 은 하나의 타입이 가질 수 잇는 배리언트(variant)들을 열거함으로써 타입을 정의할 수 있도록 합니다.
+**열거형(enumerateion, 줄여서 enum)** 은 하나의 타입이 가질 수 있는 배리언트(variant)들을 열거함으로써 타입을 정의할 수 있도록 합니다.
 
 ## 열거형 정의하기
 열거형은 어떤 값이 여러 개의 가능한 값의 집합 중 하나라는 것을 나타내는 방법을 제공
