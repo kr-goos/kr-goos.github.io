@@ -213,7 +213,7 @@ let row = vec![
       let s = "initial contents".to_string();
       ```
         - 저장해둘 문자열 초깃값을 가지고 있는 경우 `to_string` 메서드 이용
-        - `Display` 트레이트가 구현된 어떤 타입으든 사용 가능
+        - `Display` 트레이트가 구현된 어떤 타입이든 사용 가능
             - `Display` 트레이트란 사람이 읽기 편한 형태로 데이터를 출력할 수 있도록 구현하는 표준 인터페이스
             - 즉, 숫자, 문자 등 여러 타입을 문자열로 바꿀 때도 to_string()을 쓸 수 있음
                 - ```rust
