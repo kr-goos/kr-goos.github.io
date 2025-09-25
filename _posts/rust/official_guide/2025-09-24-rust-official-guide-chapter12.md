@@ -73,5 +73,57 @@ let contents = fs::read_to_string(file_path).expect("Should have been able to re
 4. 서로 다른 에러를 처리하기 위해 `expect`를 남발하지 말고, 모든 에러 처리 코드를 한 곳에 모아두어 최종 사용자에게 의미 있는 메시지를 출력
 
 ### 바이너리 프로젝트에 대한 관심사 분리
+- main이 커지기 시작하여 여러 책임과 기능들이 main 에 조직화될 때 이 바이너리 프로그램의 별도 관심사를 나누기 위한 가이드라인 단계
+    - 프로그램을 main.rs와 lib.rs로 분리하고 프로그램 로직을 lib.rs로 옮김
+    - 커맨드 라인 파싱 로직이 작은 동안에는 main.rs에 남을 수 있음
+    - 커맨드 라인 파싱 로직이 복잡해지기 시작하면, main.rs로부터 추출하여 lib.rs로 옮김
+- 위 과정을 거친 후 main 함수에 남아 있는 책임 소재는 다음으로 한정
+    - 인수를 가지고 커맨드 라인 파싱 로직 호출
+    - 그 밖의 설정
+    - lib.rs의 run 함수 호출
+    - run이 에러를 반환할 때 에러 처리하기
+- 즉, 위 패턴은 main.rs는 프로그램 실행을, lib.rs는 당면한 작업의 모든 로직 처리를 담당하여 관심사 분리
+
+#### 인수 파서 추출
+```rust
+fn parse_config(args: &[String]) -> (&str, &str) {
+    let query = &args[1];
+    let file_path = &args[2];
+
+    (query, filepath)
+}
+```
+- main 으로 부터 커맨드라인 파싱 로직을 담당하는 parse_config 함수 추출 (main은 더 이상 커맨드 라인 인수와 변수들이 어떻게 대응되는지 결정할 책임이 없음)
+
+#### 설정값 묶기
+```rust
+struct Config {
+    query: String,
+    file_path: String,
+}
+
+fn parse_config(args: &[String]) -> Config {
+    let query = args[1].clone();
+    let file_path = args[2].clone();
+
+    Config { query, filepath }
+}
+```
+- 기존 튜플로 묶어진 2개의 반환 값은 명확한 의미를 전달해주지 못하므로, 두 값을 하나의 구조체에 넣고 구조체 필드에 각각 의미가 있는 이름을 부여하여 이 값들이 어떻게 연관이 되어있고 이 값들의 목적은 무엇인지 더 쉽게 이해하도록 변경
+- `clone` 메서드는 데이터의 전체 복사본을 만들어 Config 인스턴스가 소유할 수 있게 해주는데, 이는 문자열 데이터에 대한 참조자를 저장하는 것이 비해 더 많은 시간과 메모리를 소비하지만, 값의 복제는 참조자의 라이프타임을 관리할 필요가 없어지기 때문에 약간의 성능을 포기하고 단순함을 얻는 것은 가치 있는 절충안
+
+#### Config를 위한 생성자 만들기
+```rust
+impl Config {
+    fn new(args: &[String]) -> Config {
+        let query = args[1].clone();
+        let file_path = args[2].clone();
+
+        Config { query, filepath }
+    }
+}
+```
+- `Config` 구조체가 들어오면서 `parse_config` 함수의 목적이 `Config` 인스턴스를 생성하는 것이 되었으므로, Config 구조체와 연관된 `new` 라는 이름의 함수로 변경하는 것이 더 자연스러움
 
 
+### 에러 처리 수정
